@@ -1,13 +1,22 @@
 <?php            
 
+    require_once("./validation.php");
+
     //************************************************************************************/
     //Variable um ohne VPN Connection zu Arbeiten
     //Anlagebewirtschafter, Administrator
     $offlineWork = false;
     //************************************************************************************/
 
+    $validation = new Validation();
+
     $userName = $_POST["benutzername"];
     $password = $_POST["password"];
+
+    
+    $check = $validation->checkInput("$userName");
+    $check = $validation->checkInput("$password");
+
 
     $mysqli = @new mysqli("abbtsdb",$userName,$password,"Anlagedaten");
 
