@@ -7,6 +7,6 @@
     echo "Logout erfolgreich";
 
     //Mit Meldung rechts dass abgemeldet
-    header("location: ../index.php?Logout=ok");
+    header("location: ../../Features/index.php?Logout=ok");
     
 ?>

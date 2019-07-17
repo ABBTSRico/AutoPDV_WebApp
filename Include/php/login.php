@@ -1,6 +1,6 @@
 <?php            
 
-    require_once("./validation.php");
+    require_once("validation.php");
 
     //************************************************************************************/
     //Variable um ohne VPN Connection zu Arbeiten
@@ -28,19 +28,19 @@
 
     if (empty($userName) or empty($password))
     {
-        header("location: ../index.php?LoginError=miss");
+        header("location: ../../Features/index.php?LoginError=miss");
     }
     else if ($mysqli->connect_error) {
         $errorNumber = $mysqli->connect_errno;
         if ($errorNumber == 2002){
             //SQL Error: 2002
             //Error with connection to MySQL database
-            header("location: ../index.php?LoginError=conn");
+            header("location: ../../Features/index.php?LoginError=conn");
         }
         else if ($errorNumber == 1045){
             //SQL Error: 1045
             //Error because of wrong credentials
-            header("location: ../index.php?LoginError=cred");
+            header("location: ../../Features/index.php?LoginError=cred");
         }
     }
     else
@@ -64,7 +64,7 @@
             //Anlagebewirtschafter
             session_start();
             $_SESSION["constructionEngineer"] = $user["MaID"];
-            header("location: ../php/anlageVerwaltung.php");
+            header("location: ../../Features/ConstrMgmt/constrMgmt.php");
         }
     
     
@@ -72,7 +72,7 @@
             //Benutzerverwalter
             session_start();
             $_SESSION["userManager"] = $user["MaID"];
-            header("location: ../php/benutzerVerwaltung.php");
+            header("location: ../../Features/UserMgmt/userMgmt.php");
         }
         
         
@@ -95,14 +95,11 @@
         session_start();
         $userId = 14;
 
-        //$_SESSION["userManagement"] = $userId;
-        //header("location: ../php/benutzerVerwaltung.php");
+        $_SESSION["userManagement"] = $userId;
+        header("location: ../../Features/UserMgmt/userMgmt.php");
 
         //$_SESSION["constructionEngineer"] = $userId;
-        //header("location: ../php/anlageVerwaltung.php");
-
-        $_SESSION["tester"] = $userId;
-        header("location: ../php/pruefer.php");
+        //header("location: ../../Features/ConstrMgmt/constrMgmt.php");
 
 
         //https://www.php.net/manual/de/function.session-create-id.php

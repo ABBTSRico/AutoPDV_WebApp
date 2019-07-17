@@ -6,7 +6,7 @@ if(!isset($_SESSION["userManager"])) {
     die('Sie sind nicht korrekt <a href="../index.php">angemeldet</a>');
 }
 
-require_once("benutzerLayout.php");
+require_once("userLayout.php");
 
 $userManagementLayout = new UserManagementLayout();
 

@@ -1,6 +1,6 @@
 <?php
 
-class TesterLayout {
+class ConstructionLayout {
 
     //PageHeader eventuell in globalem File
     public static function getHeader(){
@@ -11,7 +11,7 @@ class TesterLayout {
                         <meta charset="utf-8">
                         <title>EWZ - AutoPDV</title>
                         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-                        <link rel="stylesheet" href="../css/prueferLayout.css">
+                        <link rel="stylesheet" href="constrLayout.css">
                     </head>
                     <body>
                     ';
@@ -28,10 +28,10 @@ class TesterLayout {
 			<div id="c1" class="container-fluid text-center">
 				<div class="row">
 					<div class="col-md-2">
-						<img src="../img/012438_ewz-Logo_.png" alt="logo" width="100%" height="auto"/>   <!-- Responsive Layout -->
+						<img src="../../Include/img/012438_ewz-Logo_.png" alt="logo" width="100%" height="auto"/>   <!-- Responsive Layout -->
 					</div>
 				<div class="col-md-8 align-self-center">    <!-- align-self-center damit h1 vertikal in der Mitte ist -->
-					<h1>Prüfer</h1>
+					<h1>Anlagebewirtschafter</h1>
 				</div>
 					<div class="col-md-2">
 					</div>
@@ -52,13 +52,15 @@ class TesterLayout {
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
                     <div class="col-md-2 sidenav">
-                    	<a class="btn btn-primary btn-block" href="#" role="button">???</a>
+                    	<a class="btn btn-primary btn-block" href="#" role="button">Anlage ändern</a>
+                    	<a class="btn btn-primary btn-block" href="#" role="button">Anlage erfassen</a>
+                    	<a class="btn btn-primary btn-block" href="#" role="button">Zurück</a>
     				</div>
                     <div id="Background" class="col-md-8 text-left">
 					
 					</div>
     				<div class="col-md-2 sidenav">
-						<a class="btn btn-danger btn-block" href="./logout.php" role="button">logout</a>
+						<a class="btn btn-danger btn-block" href="../../Include/php/logout.php" role="button">logout</a>
     				</div>
   				</div>
 			</div>

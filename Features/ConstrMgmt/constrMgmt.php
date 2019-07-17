@@ -6,7 +6,7 @@ if(!isset($_SESSION["constructionEngineer"])) {
     die('Sie sind nicht korrekt <a href="../index.php">angemeldet</a>');
 }
 
-require_once("anlageLayout.php");
+require_once("constrLayout.php");
 
 $constructionLayout = new ConstructionLayout();
 

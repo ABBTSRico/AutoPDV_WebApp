@@ -1,7 +1,7 @@
 
 <?php
 
-require_once("./php/htmlLayout.php");
+require_once("../Include/php/htmlLayout.php");
 
 $htmlLayout = new HtmlLayout();
 
