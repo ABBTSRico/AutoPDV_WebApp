@@ -84,7 +84,7 @@ class HtmlLayout {
 						<p id="ErrorMessage">'.$Message.'</p>
     				</div>
     				<div id="Background" class="col-md-8 text-left"> 
-						<img src="./img/IMG_20181218_134236.jpg" alt="hintergrundbild" width="100%" height="100%"/>   <!-- Responsive Layout -->
+						<img src="../Include/img/IMG_20181218_134236.jpg" alt="hintergrundbild" width="100%" height="100%"/>   <!-- Responsive Layout -->
 				    </div>
     				<div class="col-md-2 sidenav">
       					<div class="well">
