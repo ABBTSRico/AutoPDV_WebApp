@@ -60,15 +60,7 @@
         echo "<h1>Willkommen ". $row["Vorname"]. " ". $user["MaID"]. "!</h1>";
 
 
-        if ($userGroup["GrID"] == 1){
-            //Administrator - Benutzerverwaltung
-            session_start();
-            $_SESSION["userManagement"] = $user["MaID"];
-            header("location: ../php/benutzerVerwaltung.php");
-        }
-
-
-        else if ($userGroup["GrID"] == 2){
+        if ($userGroup["GrID"] == 2){
             //Anlagebewirtschafter
             session_start();
             $_SESSION["constructionEngineer"] = $user["MaID"];
@@ -76,11 +68,11 @@
         }
     
     
-        else if ($userGroup["GrID"] == 4){
-            //Prüfer
+        else if ($userGroup["GrID"] == 6){
+            //Benutzerverwalter
             session_start();
-            $_SESSION["tester"] = $user["MaID"];
-            header("location: ../php/pruefer.php");
+            $_SESSION["userManager"] = $user["MaID"];
+            header("location: ../php/benutzerVerwaltung.php");
         }
         
         
