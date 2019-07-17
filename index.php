@@ -35,8 +35,6 @@ else {
 }
 
 
-
-
 $pageContent = $htmlLayout->getPageContent($message);
 
 
