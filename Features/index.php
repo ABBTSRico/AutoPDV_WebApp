@@ -9,9 +9,7 @@ $header = $htmlLayout->getHeader();
 
 $pageHeader = $htmlLayout->getPageHeader();
 
-
 $pageFooter = $htmlLayout->getPageFooter();
-
 
 if(isset($_GET["LoginError"]) && $_GET["LoginError"] == 'miss'){
     //Fehlende Eingabe in Benutzername und / oder Passwort
@@ -25,6 +23,10 @@ else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'cred'){
     //Falscher Benutzername oder Passwort (DB Login)
     $message="cred";
 }
+else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'role'){
+    //Benutzer hat Rolle die keine Berechtigung für Web App hat
+    $message="role";
+}
 else if(isset($_GET["Logout"]) && $_GET["Logout"] == 'ok'){
     //Logout
     $message="logout";
@@ -34,9 +36,7 @@ else {
     $message="ok";
 }
 
-
 $pageContent = $htmlLayout->getPageContent($message);
-
 
 echo $header;
 
@@ -45,7 +45,5 @@ echo $pageHeader;
 echo $pageContent;
 
 echo $pageFooter;
-
-
 
 ?>

@@ -54,13 +54,16 @@ class HtmlLayout {
 			$Message =""; 
 		}
 		else if($status == "miss"){
-			$Message ="Fehlende Eingabe in Benutzername und / oder Passwort"; 
+			$Message ="Fehlende Eingabe in Benutzername <br/> und / oder Passwort"; 
 		}
 		else if($status == "conn"){
 			$Message ="Verbindung zu Datenbank nicht möglich"; 
 		}
 		else if($status == "cred"){
 			$Message ="Falscher Benutzername oder Passwort"; 
+		}
+		else if($status == "role"){
+			$Message ="Mit Ihrer Rolle haben Sie keine Berechtigung für diese Applikation"; 
 		}
 		else if($status == "logout"){
 			$Message ="Logout - Vorgang abgeschlossen"; 

@@ -77,8 +77,8 @@
         
         
         else {
-        //Andere Rollen
-        echo "andere: ". $userGroup["GrID"];
+            //Error because of wrong role
+            header("location: ../../Features/index.php?LoginError=role");
         }
 
     }

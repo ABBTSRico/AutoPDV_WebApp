@@ -36,5 +36,6 @@ h1 { font-size: 3.5vw; color: #003763; font-family: Arial, Helvetica, sans-serif
 
 #ErrorMessage{
   color: #FF0000;
+  font-weight: bold;
 }
 
