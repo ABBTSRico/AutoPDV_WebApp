@@ -19,6 +19,10 @@ else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'conn'){
     //Verbindung zu Datenbank nicht möglich
     $message="conn";
 }
+else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'val'){
+    //Eingabe Validierung fehlgeschlagen (DB Login)
+    $message="val";
+}
 else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'cred'){
     //Falscher Benutzername oder Passwort (DB Login)
     $message="cred";

@@ -13,11 +13,11 @@
     $userName = $_POST["benutzername"];
     $password = $_POST["password"];
 
+    //$check = $validation->checkInput("$userName");
+    //$check = $validation->checkInput("$password");
+    $checkUser = $validation->checkUser("$userName");
+    $checkPassword = $validation->checkPassword("$password");
     
-    $check = $validation->checkInput("$userName");
-    $check = $validation->checkInput("$password");
-
-
     $mysqli = @new mysqli("abbtsdb",$userName,$password,"Anlagedaten");
 
 
@@ -29,6 +29,9 @@
     if (empty($userName) or empty($password))
     {
         header("location: ../../Features/index.php?LoginError=miss");
+    }
+    else if ($checkUser != "ok" or $checkPassword != "ok"){
+        header("location: ../../Features/index.php?LoginError=val");
     }
     else if ($mysqli->connect_error) {
         $errorNumber = $mysqli->connect_errno;
@@ -57,7 +60,7 @@
         $query="SELECT GrID FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\";";
         $userGroup=mysqli_fetch_assoc(mysqli_query($con,$query));
 
-        echo "<h1>Willkommen ". $row["Vorname"]. " ". $user["MaID"]. "!</h1>";
+        //echo "<h1>Willkommen ". $row["Vorname"]. " ". $user["MaID"]. "!</h1>";
 
 
         if ($userGroup["GrID"] == 2){

@@ -59,6 +59,9 @@ class HtmlLayout {
 		else if($status == "conn"){
 			$Message ="Verbindung zu Datenbank nicht möglich"; 
 		}
+		else if($status == "val"){
+			$Message ="Ungültige Eingabe bei Benutzername oder Passwort"; 
+		}
 		else if($status == "cred"){
 			$Message ="Falscher Benutzername oder Passwort"; 
 		}
