@@ -25,6 +25,16 @@ h1 { font-size: 3.5vw; color: #003763; font-family: Arial, Helvetica, sans-serif
     height: 75vh;
 }
 
+.SessionErrorText{
+  color: #FF0000;
+  font-size: 2.0vw;
+}
+
+.SessionErrorLink{
+  font-size: 1.5vw;
+}
+
+
 #iUser, #iPassword{
   width: 100%;
   max-width: 200px;

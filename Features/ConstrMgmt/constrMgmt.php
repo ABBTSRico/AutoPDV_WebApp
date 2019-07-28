@@ -1,11 +1,5 @@
 <?php
 
-//Session prüfen
-session_start();
-if(!isset($_SESSION["constructionEngineer"])) {
-    die('Sie sind nicht korrekt <a href="../index.php">angemeldet</a>');
-}
-
 require_once("constrLayout.php");
 
 $constructionLayout = new ConstructionLayout();
@@ -20,15 +14,19 @@ $pageFooter = $constructionLayout->getPageFooter();
 
 echo $header;
 
+//Session prüfen
+session_start();
+if(!isset($_SESSION["constructionEngineer"])) {
+    session_destroy();
+    die('<p class="SessionErrorText">Sie sind nicht korrekt angemeldet!</p><a class="SessionErrorLink" href="../index.php">->Zur Login Page</a>');
+}
+
 echo $pageHeader;
 
 echo $pageContent;
 
 echo $pageFooter;
 
-
-
 //echo "Anlagebewirtschafter";
-
 
 ?>
