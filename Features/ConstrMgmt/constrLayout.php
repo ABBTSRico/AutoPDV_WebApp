@@ -2,8 +2,8 @@
 
 class ConstructionLayout {
 
-    //PageHeader eventuell in globalem File
-    public static function getHeader(){
+    //HTML Header - eventuell in globalem File
+    public static function getHeader() {
         $header = '
             <!DOCTYPE html>
                 <html lang="en">
@@ -18,7 +18,8 @@ class ConstructionLayout {
         return $header;
     }
 
-	public static function getPageHeader(){
+	//Kopfzeile
+	public static function getPageHeader() {
 		$pageHeader = '
 			<div class="row">
 				<div class="col-md-12">
@@ -46,8 +47,8 @@ class ConstructionLayout {
 		return $pageHeader;
 	}
 
-
-    public function getPageContent(){
+	//Seiteninhalt
+    public function getPageContent() {
 		$pageContent = '
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
@@ -68,8 +69,8 @@ class ConstructionLayout {
 		return $pageContent;
 	}
 
-
-	public static function getPageFooter(){
+	//Fusszeile
+	public static function getPageFooter() {
 		$body = '
 			<div class="row">
     			<div class="col-md-12">
@@ -80,8 +81,6 @@ class ConstructionLayout {
 		';
 		return $body;
 	}
-
-
 }
 
 ?>

@@ -1,12 +1,9 @@
-
 <?php
         
-    session_start();
-    session_destroy();
-         
-    echo "Logout erfolgreich";
+session_start();
+session_destroy();
 
-    //Mit Meldung rechts dass abgemeldet
-    header("location: ../../Features/index.php?Logout=ok");
+//Aufruf Startseite mit Logout Meldung
+header("location: ../../Features/index.php?Logout=ok");
     
 ?>
