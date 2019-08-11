@@ -69,6 +69,11 @@ class ConstructionLayout {
 		return $pageContent;
 	}
 
+	//Tabelleninhalte
+	public function getTableContent($sql){
+
+	}
+
 	//Fusszeile
 	public static function getPageFooter() {
 		$body = '
