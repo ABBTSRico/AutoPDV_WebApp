@@ -1,6 +1,8 @@
 <?php            
 
+session_start();
 require_once("validation.php");
+require_once("Database.php");
 
 //Variable um ohne VPN Connection zu Arbeiten -> Zu löschen
 $offlineWork = false;
@@ -9,6 +11,9 @@ $validation = new Validation();
 
 $userName = $_POST["benutzername"];
 $password = $_POST["password"];
+
+$_SESSION["userName"] = $userName;
+$_SESSION["password"] = $password;
 
 $checkUser = $validation->checkUser("$userName");
 $checkPassword = $validation->checkPassword("$password");
@@ -38,7 +43,7 @@ else if ($mysqli->connect_error){
 else{
     //Korrekter Login
     $con = mysqli_connect("abbtsdb",$userName,$password,"Anlagedaten");
-        
+    
     $query="SELECT Vorname FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\";";
     $row=mysqli_fetch_assoc(mysqli_query($con,$query));
     
@@ -50,14 +55,12 @@ else{
 
     if ($userGroup["GrID"] == 2){
         //Anlagebewirtschafter
-        session_start();
         $_SESSION["constructionEngineer"] = $user["MaID"];
         header("location: ../../Features/ConstrMgmt/constrMgmt.php");
     }
     
     else if ($userGroup["GrID"] == 6){
         //Benutzerverwalter
-        session_start();
         $_SESSION["userManager"] = $user["MaID"];
         header("location: ../../Features/UserMgmt/userMgmt.php");
     }
@@ -71,7 +74,6 @@ else{
 
     //************************************************************************************/
     else{
-        session_start();
         $userId = 14;
 
         $_SESSION["userManagement"] = $userId;
