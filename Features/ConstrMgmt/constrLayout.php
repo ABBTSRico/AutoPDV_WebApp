@@ -1,5 +1,7 @@
 <?php
 
+require_once("database.php");
+
 class ConstructionLayout {
 
     //HTML Header - eventuell in globalem File
@@ -69,9 +71,9 @@ class ConstructionLayout {
 		return $pageContent;
 	}
 
-	//Tabelleninhalte
+	//Tabelleninhalte (String)
 	public function getTableContent($sql){
-
+		
 	}
 
 	//Fusszeile
