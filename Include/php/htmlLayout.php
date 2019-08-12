@@ -1,10 +1,9 @@
-
 <?php
 
 class HtmlLayout {
 
-	//PageHeader eventuell in globalem File
-	public static function getHeader(){
+	//HTML Header - eventuell in globalem File
+	public static function getHeader() {
 		$header = '
 			<!DOCTYPE html>
 				<html lang="en">
@@ -19,8 +18,8 @@ class HtmlLayout {
 		return $header;
 	}
 
-
-	public static function getPageHeader(){
+	//Kopfzeile
+	public static function getPageHeader() {
 		$pageHeader = '
 			<div class="row">
 				<div class="col-md-12">
@@ -48,8 +47,8 @@ class HtmlLayout {
 		return $pageHeader;
 	}
 
-
-	public function getPageContent($status){
+	//Seiteninhalt
+	public function getPageContent($status) {
 		if ($status == "ok"){
 			$Message =""; 
 		}
@@ -93,12 +92,6 @@ class HtmlLayout {
 						<img src="../Include/img/IMG_20181218_134236.jpg" alt="hintergrundbild" width="100%" height="100%"/>   <!-- Responsive Layout -->
 				    </div>
     				<div class="col-md-2 sidenav">
-      					<div class="well">
-        					<p>ADS</p>
-      					</div>
-      					<div class="well">
-        					<p>ADS</p>
-      					</div>
     				</div>
   				</div>
 			</div>
@@ -106,8 +99,8 @@ class HtmlLayout {
 		return $pageContent;
 	}
 
-
-	public static function getPageFooter(){
+	//Fusszeile
+	public static function getPageFooter() {
 		$body = '
 			<div class="row">
     			<div class="col-md-12">
@@ -118,6 +111,6 @@ class HtmlLayout {
 		';
 		return $body;
 	}
-
 }
+
 ?>

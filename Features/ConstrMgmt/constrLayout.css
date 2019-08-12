@@ -1,50 +1,43 @@
-/*h1 { font-size: 3.5em; background-color: white; text-align: center; }*/
-/*h1 { border: 1px solid red; font-size: 3.5em; color: #003763; font-family: Arial, Helvetica, sans-serif; background-color: white ; text-align: center; }*/
-h1 { font-size: 3.5vw; color: #003763; font-family: Arial, Helvetica, sans-serif; background-color: white ; text-align: center; } /*responsive Font Size*/
+h1 {
+  font-size: 3.5vw;
+  color: #003763;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  text-align: center;
+}
 
 .sidenav {
-    padding-top: 20px;
-    background-color: #f1f1f1;
-    height: 100%;
-  }
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
 
-.col-md-12{
-    background-color: #EFF8FB;
-    height: 5vh;
+.col-md-12 {
+  background-color: #EFF8FB;
+  height: 5vh;
 }
 
 .c1 {
-    height: 10vh;
+  height: 10vh;
 }
 
 .row.content {
-        height: 75vh;
+  height: 75vh;
 }
 
-.col-md-8.textleft{
-    height: 75vh;
+.col-md-8.textleft {
+  height: 75vh;
 }
 
-.SessionErrorText{
+.SessionErrorText {
   color: #FF0000;
   font-size: 2.0vw;
 }
 
-.SessionErrorLink{
+.SessionErrorLink {
   font-size: 1.5vw;
 }
 
-
-#iUser, #iPassword{
-  width: 100%;
-  max-width: 200px;
-}
-
-#Background{
+#Background {
   height: 75vh;
 }
-
-#ErrorMessage{
-  color: #FF0000;
-}
-
