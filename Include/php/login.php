@@ -56,7 +56,7 @@ else{
     if ($userGroup["GrID"] == 2){
         //Anlagebewirtschafter
         $_SESSION["constructionEngineer"] = $user["MaID"];
-        header("location: ../../Features/ConstrMgmt/constrMgmt.php");
+        header("location: ../../Features/ConstrMgmt/constrMgmt.php?tableName=Anlage");
     }
     
     else if ($userGroup["GrID"] == 6){

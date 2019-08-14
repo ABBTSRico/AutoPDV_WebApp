@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("../../Include/php/Database.php");
+require_once("../TableContent/tableLayout.php");
 
 class ConstructionLayout {
 
@@ -14,8 +14,10 @@ class ConstructionLayout {
                         <meta charset="utf-8">
                         <title>EWZ - AutoPDV</title>
                         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-						<link rel="stylesheet" href="constrLayout.css">						
-                    </head>
+						<link rel="stylesheet" href="constrLayout.css">
+						<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+						<script type0"text/javascript" language="javascript" src="../../Include/js/tableCtrl.js"></script>
+					</head>
                     <body>
                     ';
         return $header;
@@ -52,7 +54,7 @@ class ConstructionLayout {
 
 	//Seiteninhalt
 	public function getPageContent(){
-		$constructionLayout = new ConstructionLayout();
+		$TableLayout = new TableLayout();
 		$pageContent = '
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
@@ -61,7 +63,7 @@ class ConstructionLayout {
                     	<a class="btn btn-primary btn-block" href="#" role="button">Anlage erfassen</a>
                     	<a class="btn btn-primary btn-block" href="#" role="button">Zurück</a>
 					</div>
-					'.$constructionLayout->getTableContent().'
+					'.$TableLayout->getTableContent($_GET["tableName"]).'
     				<div class="col-md-2 sidenav">
 						<a class="btn btn-danger btn-block" href="../../Include/php/logout.php" role="button">logout</a>
     				</div>
@@ -69,42 +71,6 @@ class ConstructionLayout {
 			</div>
 		';
 		return $pageContent;
-	}
-
-	//Tabelleninhalte
-	public function getTableContent(){
-
-		$dataBase = new Database($_SESSION["userName"],$_SESSION["password"]);
-
-		$tableContent= '
-			<table id="table1" class="table col-md-8 table-condensed table-bordered table-sm">
-				<thead>
-					<tr>
-						<th>AKS_Bezeichnung</th><th>Anlagename</th><th>Kurzzeichen</th><th>Verteilnetz</th><th>Bezeichnung</th>
-					<tr>
-				</thead>
-				<body>
-		';
-				
-		$sql="SELECT * FROM view_getStations ORDER BY AKS_Bezeichnung ASC;";
-		$dataBase->Query($sql);
-        $rows=$dataBase->Rows();                  
-
-        foreach($rows as $row){
-        	$tableContent .= "<tr>";
-            $tableContent .= "<td>".$row["AKS_Bezeichnung"]."</td>";
-            $tableContent .= "<td>".$row["Anlagename"]."</td>";
-            $tableContent .= "<td>".$row["Kurzzeichen"]."</td>";
-            $tableContent .= "<td>".$row["Verteilnetz"]."</td>";
-            $tableContent .= "<td>".$row["Bezeichnung"]."</td>";
-            $tableContent .= "</tr>";
-		}
-						
-		$tableContent .= '
-				</body>
-			</table>
-		';
-		return $tableContent;
 	}
 
 	//Fusszeile
