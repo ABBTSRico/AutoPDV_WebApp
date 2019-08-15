@@ -15,6 +15,7 @@ class ConstructionLayout {
                         <title>EWZ - AutoPDV</title>
                         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 						<link rel="stylesheet" href="constrLayout.css">
+						<link rel="stylesheet" href="../TableContent/tableLayout.css">
 						<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
 						<script type0"text/javascript" language="javascript" src="../../Include/js/tableCtrl.js"></script>
 					</head>
@@ -59,12 +60,12 @@ class ConstructionLayout {
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
                     <div class="col-md-2 sidenav">
-                    	<a class="btn btn-primary btn-block" href="#" role="button">Anlage ändern</a>
-                    	<a class="btn btn-primary btn-block" href="#" role="button">Anlage erfassen</a>
-                    	<a class="btn btn-primary btn-block" href="#" role="button">Zurück</a>
+                    	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Anlage ändern</a>
+                    	<a class="btn btn-primary btn-block" id="btn-add" href="#" role="button">Anlage erfassen</a>
+                    	<a class="btn btn-primary btn-block" id="btn-back" href="#" role="button">Zurück</a>
 					</div>
 					'.$TableLayout->getTableContent($_GET["tableName"]).'
-    				<div class="col-md-2 sidenav">
+					<div class="col-md-2 sidenav">
 						<a class="btn btn-danger btn-block" href="../../Include/php/logout.php" role="button">logout</a>
     				</div>
   				</div>

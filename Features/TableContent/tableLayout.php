@@ -9,69 +9,84 @@ class TableLayout{
 	public function getTableContent($tableName){
 
         $this->tableName = $tableName;
-
-        $dataBase = new Database($_SESSION["userName"],$_SESSION["password"]);
-        
-        '<h1>'.$tableName.'</h1>';
-
 		
-		if ($this->tableName == "Anlage"){
-            $tableContent= '
-			<table id="table1" class="table col-md-8 table-condensed table-bordered table-sm">
-				<thead>
-					<tr>
-						<th>AKS_Bezeichnung</th><th>Anlagename</th><th>Kurzzeichen</th><th>Verteilnetz</th><th>Bezeichnung</th>
-					<tr>
-				</thead>
-				<body>
-		';
-        $sql="SELECT * FROM view_getStations ORDER BY AKS_Bezeichnung ASC;";
-		$dataBase->Query($sql);
-        $rows=$dataBase->Rows();                  
+		$tableContent = '	
+		<div class="col-md-8">
+			<h2>'.$tableName.'</h2>
+			<table id="table1" class="table table-condensed table-bordered table-sm">';
 
-        foreach($rows as $row){
-        	$tableContent .= '<tr id="'.$row["ID"].'">';
-            $tableContent .= '<td>'.$row["AKS_Bezeichnung"].'</td>';
-            $tableContent .= '<td>'.$row["Anlagename"].'</td>';
-            $tableContent .= '<td>'.$row["Kurzzeichen"].'</td>';
-            $tableContent .= '<td>'.$row["Verteilnetz"].'</td>';
-            $tableContent .= '<td>'.$row["Bezeichnung"].'</td>';
-            $tableContent .= '</tr>';
-		}
-						
-		$tableContent .= '
-				</body>
-			</table>
-		';    
-        }else if($this->tableName == "InfObj"){
-            $tableContent= '
-			<table id="table1" class="table col-md-8 table-condensed table-bordered table-sm">
-				<thead>
-					<tr>
-						<th>AKS_Bezeichnung</th><th>Bezeichnung</th>
-					<tr>
-				</thead>
-				<body>
-		';
-        $sql="SELECT * FROM Anlagedaten.INFRASTRUKTUROBJEKT ORDER BY AKS_Bezeichnung ASC;";
-		$dataBase->Query($sql);
-        $rows=$dataBase->Rows();                  
+		switch($tableName){
+			case"Anlage":
+				$tableAttr = array("AKS_Bezeichnung","Anlagename","Kurzzeichen","Verteilnetz","Bezeichnung");			
+				$sql="SELECT * FROM view_getStations ORDER BY AKS_Bezeichnung ASC;";
+			break;
+			case"InfObj":
+				$tableAttr = array("AKS_Bezeichnung","InfObjBez");			
+				$sql="SELECT * FROM view_getInfObj WHERE FilterID=".$_GET["filter"].";";
+			break;
+			case"Feld":
+				$tableAttr = array("AKS_Bezeichnung","Bezeichnung");			
+				$sql="SELECT * FROM view_getFields WHERE FilterID=".$_GET["filter"].";";
+			break;
 
-        foreach($rows as $row){
-        	$tableContent .= '<tr id="'.$row["InfObID"].'">';
-            $tableContent .= '<td>'.$row["AKS_Bezeichnung"].'</td>';
-            $tableContent .= '<td>'.$row["Infrastrukturobjektbezeichnung"].'</td>';
-            $tableContent .= '</tr>';
 		}
-						
-		$tableContent .= '
-				</body>
+		
+		$tableContent	.= $this->getTableHeader($tableAttr)
+			.$this->getTableBody($tableAttr,$sql)
+			.'
+				</tbody>
 			</table>
+		</div>
 		';
-        }		
+        		
 		
 		return $tableContent;
 	}
+
+	//Kopfzeile der Tabelle ($Array[String])
+	public function getTableHeader($tableAttr){
+
+		$tableHeader = '	
+			<thead>
+		<tr>
+		';
+		
+		foreach($tableAttr as $attr){
+			$tableHeader .= '<th>'.$attr.'</th>';
+		}
+
+		$tableHeader .= '
+			</tr>
+		</thead>
+		';
+
+		return $tableHeader;
+	}
+
+	//Tabellenrumpf ($Array[String],$String)
+	public function getTableBody($tableAttr,$sql){
+
+        $dataBase = new Database($_SESSION["userName"],$_SESSION["password"]);
+
+		$dataBase->Query($sql);
+		$rows=$dataBase->Rows();
+
+		$tableBody = '<tbody>';
+
+		foreach($rows as $row){
+			$tableBody .= '<tr id="'.$row["ID"].'">';
+			foreach($tableAttr as $attr){
+				$tableBody .= '<td id="'.$attr.'">'.$row[$attr].'</td>';
+			}
+			$tableBody .= '</tr>';
+		}
+
+		$tableBody .= '</tbody>';
+
+		return $tableBody;
+	}
+
+
 }
 
 ?>
