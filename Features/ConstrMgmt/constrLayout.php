@@ -2,11 +2,13 @@
 
 session_start();
 require_once("../TableContent/tableLayout.php");
+require_once("../PopUp/popUp.php");
 
 class ConstructionLayout {
 
     //HTML Header - eventuell in globalem File
     public static function getHeader() {
+		$popUp = new PopUp();
         $header = '
             <!DOCTYPE html>
                 <html lang="en">
@@ -16,11 +18,12 @@ class ConstructionLayout {
                         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 						<link rel="stylesheet" href="constrLayout.css">
 						<link rel="stylesheet" href="../TableContent/tableLayout.css">
+						<link rel="stylesheet" href="../PopUp/popUp.css">
 						<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
-						<script type0"text/javascript" language="javascript" src="../../Include/js/tableCtrl.js"></script>
+						<script type="text/javascript" language="javascript" src="constrMgmt.js"></script>
 					</head>
                     <body>
-                    ';
+                    '.$popUp->getPopUp();
         return $header;
     }
 
@@ -61,7 +64,7 @@ class ConstructionLayout {
   				<div class="row content">
                     <div class="col-md-2 sidenav">
                     	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Anlage ändern</a>
-                    	<a class="btn btn-primary btn-block" id="btn-add" href="#" role="button">Anlage erfassen</a>
+                    	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Anlage erfassen</a>
                     	<a class="btn btn-primary btn-block" id="btn-back" href="#" role="button">Zurück</a>
 					</div>
 					'.$TableLayout->getTableContent($_GET["tableName"]).'
