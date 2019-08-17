@@ -8,7 +8,7 @@ class ConstructionLayout {
 
     //HTML Header - eventuell in globalem File
     public static function getHeader() {
-		$popUp = new PopUp();
+		$popUp = new PopUp($_GET["tableName"]);
         $header = '
             <!DOCTYPE html>
                 <html lang="en">
@@ -20,7 +20,9 @@ class ConstructionLayout {
 						<link rel="stylesheet" href="../TableContent/tableLayout.css">
 						<link rel="stylesheet" href="../PopUp/popUp.css">
 						<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
-						<script type="text/javascript" language="javascript" src="constrMgmt.js"></script>
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+						<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        				<script type="text/javascript" language="javascript" src="constrMgmt.js"></script>
 					</head>
                     <body>
                     '.$popUp->getPopUp();
@@ -65,7 +67,7 @@ class ConstructionLayout {
                     <div class="col-md-2 sidenav">
                     	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Anlage ändern</a>
                     	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Anlage erfassen</a>
-                    	<a class="btn btn-primary btn-block" id="btn-back" href="#" role="button">Zurück</a>
+                    	<a class="btn btn-primary btn-block" id="btn-back" href="#" value="Zur&uuml;ck" onClick="history.back()" role="button">Zurück</a>
 					</div>
 					'.$TableLayout->getTableContent($_GET["tableName"]).'
 					<div class="col-md-2 sidenav">

@@ -1,6 +1,6 @@
 /* PopUp (background) */
 .popUp {
-    display: block; 
+    display: none; 
     position: fixed; 
     z-index: 1; 
     left: 0;
@@ -12,8 +12,9 @@
     background-color: rgba(0,0,0,0.4); 
 }
 
-.popUp-hidden{
-    display: none;
+.popUp-btn{
+    background-color: blueviolet;
+    margin-top: 0em;
 }
   
 /* PopUp Inhalt/Box */

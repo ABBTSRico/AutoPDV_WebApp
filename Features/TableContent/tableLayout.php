@@ -7,9 +7,6 @@ class TableLayout{
 
     //Tabelleninhalte ($String)
 	public function getTableContent($tableName){
-
-        $this->tableName = $tableName;
-		
 		$tableContent = '	
 		<div class="col-md-8">
 			<h2>'.$tableName.'</h2>

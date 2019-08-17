@@ -12,6 +12,7 @@ $(document).ready(function(){
         $('.selected').removeClass('selected');
         $(this).addClass("selected");
         $(this).addClass("bg-primary");
+        filter = $(this).attr("id");
     });
 
     // Tasteneingabe überwachen
@@ -23,7 +24,7 @@ $(document).ready(function(){
         var isPopUpactiv = false;
 
         $.each($('.popUp'),function(){
-            if ($(this).attr("data-active") == "true"){
+            if ($(this).css("display") == "block"){
                 return isPopUpactiv = true;
             }
         });
@@ -36,21 +37,21 @@ $(document).ready(function(){
             }else{
               alert("Es ist kein Element ausgewählt !!!");
             }
-        }else if (event.key == "Escape" && isPopUpactiv) {// Betätigen der ESC-Taste
-            event.preventDefault();
-            closePopUp();
         }
-      }, true);
-      ;
+    }, true);
 
-    // Öffnet die Detailtabelle
-    function getNextTable(){
+    // Gibt die aktuell Angezeigte Tabelle aus
+    function getTableName(){
         var $_GET = location.search.replace("?","").split("&").map(function(val){
             return val.split("=");
         });
-        currentTable = $_GET[0][1];
+        return $_GET[0][1];
+    };
 
-        switch(currentTable){
+    // Öffnet die Detailtabelle
+    function getNextTable(){        
+
+        switch(getTableName()){
             case "Anlage":
                 targetTable = "InfObj"
                 break;
@@ -67,6 +68,7 @@ $(document).ready(function(){
     $('#btn-edit').click(function(){
         if ($('.selected').attr("id") != null){
             popUpID = $('#popUpEdit');
+            //getPopUpBody();
             openPopUp();
         }else{
             alert("Es ist kein Element ausgewählt !!!");
@@ -76,30 +78,34 @@ $(document).ready(function(){
     // Erfassungsansicht anzeigen
     $('#btn-append').click(function(){
         popUpID = $('#popUpAppend');
+        $.post("../PopUp/popUp.php",{
+            getPopUpBody : true,
+            filterID: filter,
+            tableName: getTableName()
+        },function(data){
+            $('.modal-body').html(data);
+        })
         openPopUp();
     });
 
     //Ansicht öffnen generell
     function openPopUp(){
-        popUpID.removeClass("popUp-hidden");
-        popUpID.attr("data-active", true);
+        popUpID.modal({show:true});
     };
 
-    // Ansicht schliessen durch drücken X
-    $('.popUp-close').click(function(){
-        closePopUp();
-    });
+    function getPopUpBody(){
+        id = ($('.selected').attr("id"));
+        $.post("../PopUp/popUpBody.php?filter="+filter,function(data){
+            alert(data);
+        });
 
-    // Ansucht schliessen durch click ausserhalb
-    $('.popUp').click(function(){
-        closePopUp();
-    });
-
-    //Ansucht schliessen generell
-    function closePopUp(){
-        $('.popUp').addClass("popUp-hidden");
-        $('.popUp').attr("data-active", false);
     };
+
+    //Daten in Datenbank schreiben
+    $('#btn-save').click(function(){
+
+    });
+    
 
     function editElement() {
         filter = $('.selected').attr("id");
