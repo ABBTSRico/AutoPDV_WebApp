@@ -1,11 +1,14 @@
 <?php
 
-require_once("database.php");
+session_start();
+require_once("../TableContent/tableLayout.php");
+require_once("../PopUp/popUp.php");
 
 class ConstructionLayout {
 
     //HTML Header - eventuell in globalem File
     public static function getHeader() {
+		$popUp = new PopUp($_GET["tableName"]);
         $header = '
             <!DOCTYPE html>
                 <html lang="en">
@@ -13,10 +16,16 @@ class ConstructionLayout {
                         <meta charset="utf-8">
                         <title>EWZ - AutoPDV</title>
                         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-                        <link rel="stylesheet" href="constrLayout.css">
-                    </head>
+						<link rel="stylesheet" href="constrLayout.css">
+						<link rel="stylesheet" href="../TableContent/tableLayout.css">
+						<link rel="stylesheet" href="../PopUp/popUp.css">
+						<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+						<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        				<script type="text/javascript" language="javascript" src="constrMgmt.js"></script>
+					</head>
                     <body>
-                    ';
+                    '.$popUp->getPopUp();
         return $header;
     }
 
@@ -50,30 +59,24 @@ class ConstructionLayout {
 	}
 
 	//Seiteninhalt
-    public function getPageContent() {
+	public function getPageContent(){
+		$TableLayout = new TableLayout();
 		$pageContent = '
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
                     <div class="col-md-2 sidenav">
-                    	<a class="btn btn-primary btn-block" href="#" role="button">Anlage ändern</a>
-                    	<a class="btn btn-primary btn-block" href="#" role="button">Anlage erfassen</a>
-                    	<a class="btn btn-primary btn-block" href="#" role="button">Zurück</a>
-    				</div>
-                    <div id="Background" class="col-md-8 text-left">
-					
+                    	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Anlage ändern</a>
+                    	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Anlage erfassen</a>
+                    	<a class="btn btn-primary btn-block" id="btn-back" href="#" value="Zur&uuml;ck" onClick="history.back()" role="button">Zurück</a>
 					</div>
-    				<div class="col-md-2 sidenav">
+					'.$TableLayout->getTableContent($_GET["tableName"]).'
+					<div class="col-md-2 sidenav">
 						<a class="btn btn-danger btn-block" href="../../Include/php/logout.php" role="button">logout</a>
     				</div>
   				</div>
 			</div>
 		';
 		return $pageContent;
-	}
-
-	//Tabelleninhalte (String)
-	public function getTableContent($sql){
-		
 	}
 
 	//Fusszeile
