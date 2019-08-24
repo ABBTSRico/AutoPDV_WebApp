@@ -93,18 +93,18 @@ $(document).ready(function(){
         popUpID.modal({show:true});
     };
 
-    function getPopUpBody(){
-        id = ($('.selected').attr("id"));
-        $.post("../PopUp/popUpBody.php?filter="+filter,function(data){
-            alert(data);
-        });
-
+    function closePopUp(){
+        popUpID.modal('toggle');
     };
 
-    //Daten in Datenbank schreiben
-    $('#btn-save').click(function(){
-
+    $(document).on('click','#btn-del',function(){
+        $.post("../Forms/form.php",{"deleteData":true,"tableName":getTableName(),"filterID":filter});
+        closePopUp(); 
     });
+    //Daten in Datenbank schreiben
+    /*popUpID.on('shown.bs.modal',function(){
+        
+    });*/
     
 
     function editElement() {
