@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 require 'SmokeTest.php';
 
-class CalculatorTests extends TestCase
+class StartApplication extends TestCase
 {
     private $smokeTest;
  
@@ -18,7 +18,7 @@ class CalculatorTests extends TestCase
         $this->smokeTest = NULL;
     }
  
-    public function testAdd()
+    public function testApplicationStart()
     {
         $result = $this->smokeTest->getHttpCode('http://localhost/AutoPDV/Features/index.php');
         fwrite(STDERR, "HTTP-Code: ". $result. "\n");
@@ -26,5 +26,8 @@ class CalculatorTests extends TestCase
         //$this->assertTrue(true);
         //$this->assertTrue(false);
     }
+
+
+
 }
 
