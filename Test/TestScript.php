@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require 'smokeTest.php';
 require '../Include/php/validation.php';
 
-class StartApplication extends TestCase {
+class AutoPDVTest extends TestCase {
   
     private $smokeTest;
     private $validation;
@@ -98,8 +98,6 @@ class StartApplication extends TestCase {
         $this->assertEquals(true,$result);
     }
 
-        //$this->assertTrue(true);
-        //$this->assertTrue(false);
-
 }
 
+?>
