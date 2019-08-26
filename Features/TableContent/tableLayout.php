@@ -14,7 +14,7 @@ class TableLayout{
 
 		switch($tableName){
 			case"Anlage":
-				$tableAttr = array("AKS_Bezeichnung","Anlagename","Kurzzeichen","Verteilnetz","Bezeichnung");			
+				$tableAttr = array("AKS_Bezeichnung","Anlagename","Kurzzeichen","Verteilnetzname","Bezeichnung");			
 				$sql="SELECT * FROM view_getStations ORDER BY AKS_Bezeichnung ASC;";
 			break;
 			case"InfObj":

@@ -40,12 +40,21 @@ $(document).ready(function(){
         }
     }, true);
 
-    // Gibt die aktuell Angezeigte Tabelle aus
+    // Gibt die aktuell angezeigte Tabelle aus
     function getTableName(){
         var $_GET = location.search.replace("?","").split("&").map(function(val){
             return val.split("=");
         });
         return $_GET[0][1];
+
+    };    // Gibt die aktuell angezeigte *ID aus
+    function getID(){
+        var $_GET = location.search.replace("?","").split("&").map(function(val){
+            return val.split("=");
+        });
+        if($_GET.length > 1){
+            return $_GET[1][1];
+        }
     };
 
     // Öffnet die Detailtabelle
@@ -66,10 +75,19 @@ $(document).ready(function(){
 
     // Bearbeitungssicht anzeigen
     $('#btn-edit').click(function(){
+        $('#popUpTitle').html("Element bearbeiten");
         if ($('.selected').attr("id") != null){
-            popUpID = $('#popUpEdit');
-            //getPopUpBody();
+            $.post("../PopUp/popUp.php",{
+                getPopUpBody : true,
+                edit: true,
+                filterID: filter,
+                tableName: getTableName(),
+                parentID: getID()
+            },function(data){
+                $('.modal-body').html(data);
+            })
             openPopUp();
+
         }else{
             alert("Es ist kein Element ausgewählt !!!");
         }
@@ -77,11 +95,12 @@ $(document).ready(function(){
 
     // Erfassungsansicht anzeigen
     $('#btn-append').click(function(){
-        popUpID = $('#popUpAppend');
+        $('#popUpTitle').html("Element erfassen");
         $.post("../PopUp/popUp.php",{
             getPopUpBody : true,
-            filterID: filter,
-            tableName: getTableName()
+            append : true,
+            tableName: getTableName(),
+            parentID: getID()
         },function(data){
             $('.modal-body').html(data);
         })
@@ -90,27 +109,23 @@ $(document).ready(function(){
 
     //Ansicht öffnen generell
     function openPopUp(){
-        popUpID.modal({show:true});
+        $('#popUp').modal({show:true});
     };
 
-    function getPopUpBody(){
-        id = ($('.selected').attr("id"));
-        $.post("../PopUp/popUpBody.php?filter="+filter,function(data){
-            alert(data);
-        });
-
+    //Ansicht schliessen generell
+    function closePopUp(){
+        $('#popUp').modal('toggle');
+        location.reload();
     };
 
     //Daten in Datenbank schreiben
-    $('#btn-save').click(function(){
-
+    $(document).on('click','#btn-del',function(){
+        $.post("../Forms/form.php",{"deleteData":true,"tableName":getTableName(),"filterID":filter});
+        closePopUp(); 
     });
     
-
     function editElement() {
         filter = $('.selected').attr("id");
-        //$.post("../../Include/php/Database.php")
-        //.done(function(Query))s
         openPopUpEdit();
         alert($('.selected').attr("id"));
     };
