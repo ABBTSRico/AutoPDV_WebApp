@@ -1,6 +1,6 @@
 <?php
 
-class validation {
+class Validation {
 
     //Schutz vor Cross Side Scripting (XSS)
     public static function checkForXss($input) {
@@ -47,7 +47,7 @@ class validation {
             }
         }
         else{
-            return "Lenght";
+            return "Length";
         }
     }
 

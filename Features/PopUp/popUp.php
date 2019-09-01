@@ -45,6 +45,9 @@ if(isset($_POST['getPopUpBody'])){
         $currentTable=$_POST['tableName'];        
         
         switch($currentTable){
+            case"Mitarbeiter":	
+                $sql='SELECT * FROM view_getEmployee WHERE MaID="'.$filter.'"';
+            break;
             case"Anlage":	
                 $sql='SELECT * FROM ANLAGE JOIN ORT ON ANLAGE.OrtID=ORT.OrtID WHERE AnID="'.$filter.'"';
             break;
@@ -52,7 +55,10 @@ if(isset($_POST['getPopUpBody'])){
                 $sql="SELECT * FROM INFRASTRUKTUROBJEKT WHERE InfObID=".$filter.";";
             break;
             case"Feld":	
-                $sql="SELECT * FROM FELD WHERE FeID=".$_GET["filter"].";";
+                $sql="SELECT * FROM FELD WHERE FeID=".$filter.";";
+            break;
+            case"Betriebsmittel":	
+                $sql="SELECT * FROM view_getEquipment WHERE AKS_Bezeichnung ='".$filter."';";
             break;
         }
         $form ->load($sql);

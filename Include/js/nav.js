@@ -60,17 +60,20 @@ $(document).ready(function(){
     // Öffnet die Detailtabelle
     function getNextTable(){        
 
-        switch(getTableName()){
-            case "Anlage":
-                targetTable = "InfObj"
-                break;
-            case "InfObj":
-                targetTable = "Feld"
-                break;
-            default:
-                targetTable = "Leer"
+        if(getTableName() != "BETRIEBSMITTEL" || getTableName() != "MITARBEITER"){
+            switch(getTableName()){
+                case "Anlage":
+                    targetTable = "InfObj"
+                    break;
+                case "InfObj":
+                    targetTable = "Feld"
+                    break;
+                case "Feld":
+                    targetTable = "Betriebsmittel"
+                    break;
+            }
+            window.open("constrMgmt.php?tableName="+targetTable+"&filter="+filter,"_self");            
         }
-        window.open("constrMgmt.php?tableName="+targetTable+"&filter="+filter,"_self");
     }
 
     // Bearbeitungssicht anzeigen
@@ -123,10 +126,4 @@ $(document).ready(function(){
         $.post("../Forms/form.php",{"deleteData":true,"tableName":getTableName(),"filterID":filter});
         closePopUp(); 
     });
-    
-    function editElement() {
-        filter = $('.selected').attr("id");
-        openPopUpEdit();
-        alert($('.selected').attr("id"));
-    };
 })
