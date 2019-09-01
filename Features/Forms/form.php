@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+require_once("../../Include/php/session.php");
+Session::sessionCheckGeneral();
+
 require_once("../../Include/php/Database.php");
 require_once("../../Include/php/timestamp.php");
 require_once("../../Include/php/validation.php");

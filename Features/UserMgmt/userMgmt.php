@@ -1,5 +1,8 @@
 <?php
 
+require_once("../../Include/php/session.php");
+Session::sessionCheckUM();
+
 require_once("userLayout.php");
 
 $userManagementLayout = new UserManagementLayout();
@@ -13,13 +16,6 @@ $pageContent = $userManagementLayout->getPageContent();
 $pageFooter = $userManagementLayout->getPageFooter();
 
 echo $header;
-
-//Session prüfen
-session_start();
-if(!isset($_SESSION["userManager"])){
-    session_destroy();
-    die('<p class="SessionErrorText">Sie sind nicht korrekt angemeldet!</p><a class="SessionErrorLink" href="../index.php">->Zur Login Page</a>');
-}
 
 echo $pageHeader;
 

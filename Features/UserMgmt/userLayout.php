@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+require_once("../../Include/php/session.php");
+Session::sessionCheckUM();
+
 require_once("../TableContent/tableLayout.php");
 require_once("../PopUp/popUp.php");
 require_once("../Forms/form.php");

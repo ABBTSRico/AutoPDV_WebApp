@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+require_once("../../Include/php/session.php");
+Session::sessionCheckGeneral();
+
 require_once("../../Include/php/Database.php");
 
 class TableLayout{
