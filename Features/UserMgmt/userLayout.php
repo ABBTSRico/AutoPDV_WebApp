@@ -66,11 +66,9 @@ class UserManagementLayout {
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
                     <div class="col-md-2 sidenav">
-                    	<!--<a class="btn btn-primary btn-block" href="#" role="button">Benutzer anzeigen</a>-->
                     	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Benutzer ändern</a>
                     	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Benutzer anlegen</a>
-                    	<!--<a class="btn btn-primary btn-block" href="#" role="button">Benutzer löschen</a>-->
-					</div>
+                    </div>
 						'.$TableLayout->getTableContent($_GET["tableName"]).'
 					<div class="col-md-2 sidenav">
 						<a class="btn btn-danger btn-block" href="../../Include/php/logout.php" role="button">logout</a>

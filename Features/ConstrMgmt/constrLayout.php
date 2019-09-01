@@ -66,8 +66,8 @@ class ConstructionLayout {
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
                     <div class="col-md-2 sidenav">
-                    	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Anlage ändern</a>
-                    	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Anlage erfassen</a>
+                    	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Element ändern</a>
+                    	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Element erfassen</a>
                     	<a class="btn btn-primary btn-block" id="btn-back" href="#" value="Zur&uuml;ck" onClick="history.back()" role="button">Zurück</a>
 					</div>
 					'.$TableLayout->getTableContent($_GET["tableName"]).'
