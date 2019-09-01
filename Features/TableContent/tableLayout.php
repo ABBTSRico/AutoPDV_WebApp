@@ -13,6 +13,10 @@ class TableLayout{
 			<table id="table1" class="table table-condensed table-bordered table-sm">';
 
 		switch($tableName){
+			case"Mitarbeiter":
+				$tableAttr = array("Vorname","Nachname","Kurzzeichen","Gruppenname");			
+				$sql="SELECT MaID AS ID,Vorname,Nachname,Kurzzeichen,Gruppenname FROM view_getEmployee WHERE Kurzzeichen != "."'".$_SESSION["userName"]."';";
+			break;
 			case"Anlage":
 				$tableAttr = array("AKS_Bezeichnung","Anlagename","Kurzzeichen","Verteilnetzname","Bezeichnung");			
 				$sql="SELECT * FROM view_getStations ORDER BY AKS_Bezeichnung ASC;";
@@ -24,6 +28,10 @@ class TableLayout{
 			case"Feld":
 				$tableAttr = array("AKS_Bezeichnung","Bezeichnung");			
 				$sql="SELECT * FROM view_getFields WHERE FilterID=".$_GET["filter"].";";
+			break;
+			case"Betriebsmittel":
+				$tableAttr = array("ID");			
+				$sql="SELECT DISTINCT AKS_Bezeichnung AS ID FROM (SELECT * FROM view_getEquipment WHERE FilterID=".$_GET["filter"].") AS DEVICES;";
 			break;
 
 		}

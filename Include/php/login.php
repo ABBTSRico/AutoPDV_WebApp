@@ -62,7 +62,7 @@ else{
     else if ($userGroup["GrID"] == 6){
         //Benutzerverwalter
         $_SESSION["userManager"] = $user["MaID"];
-        header("location: ../../Features/UserMgmt/userMgmt.php");
+        header("location: ../../Features/UserMgmt/userMgmt.php?tableName=Mitarbeiter");
     }
         
     else{

@@ -23,8 +23,7 @@ class ConstructionLayout {
 						<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 						<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-						<script type="text/javascript" language="javascript" src="constrMgmt.js"></script>
-						<script type="text/javascript" language="javascript" src="../Forms/form.js"></script>
+						<script type="text/javascript" language="javascript" src="../../Include/js/nav.js"></script>
 					</head>
                     <body>
                     '.$popUp->getPopUp();
@@ -67,8 +66,8 @@ class ConstructionLayout {
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
                     <div class="col-md-2 sidenav">
-                    	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Anlage ändern</a>
-                    	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Anlage erfassen</a>
+                    	<a class="btn btn-primary btn-block" id="btn-edit" href="#" role="button">Element ändern</a>
+                    	<a class="btn btn-primary btn-block" id="btn-append" href="#" role="button">Element erfassen</a>
                     	<a class="btn btn-primary btn-block" id="btn-back" href="#" value="Zur&uuml;ck" onClick="history.back()" role="button">Zurück</a>
 					</div>
 					'.$TableLayout->getTableContent($_GET["tableName"]).'
