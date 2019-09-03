@@ -131,24 +131,24 @@ protected $dbRow;
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" value="'.$this->dbRow["AKS_Bezeichnung"].'">
+                    <input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" required value="'.$this->dbRow["AKS_Bezeichnung"].'">
                 </div>
                 <div class="form-group col-md-3">
-                    <input type="text" class="form-control" minlength=3 maxlength=3 id="shortsign" name="Kurzzeichen" placeholder="Kürzel" value="'.$this->dbRow["Kurzzeichen"].'">
+                    <input type="text" class="form-control" minlength=3 maxlength=3 id="shortsign" name="Kurzzeichen" placeholder="Kürzel" required value="'.$this->dbRow["Kurzzeichen"].'">
                 </div>
             </div>
             <div class="form-group">
-            	<input type="text" class="form-control" id="station" name="Anlage" placeholder="Anlage" value="'.$this->dbRow["Anlagename"].'">
+            	<input type="text" class="form-control" id="station" name="Anlage" placeholder="Anlage" required value="'.$this->dbRow["Anlagename"].'">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="address" name="Adresse" placeholder="Strasse" value="'.$this->dbRow["Adresse"].'">
             </div>
             <div class="row ">
                 <div class="form-group col-md 2">
-                    <input type="numeric" min=1000 max=9999 class="form-control" id="zip" name="PLZ" placeholder="PLZ" value="'.$this->dbRow["PLZ"].'">
+                    <input type="numeric" min=1000 max=9999 class="form-control" id="zip" name="PLZ" required placeholder="PLZ" value="'.$this->dbRow["PLZ"].'">
                 </div>
                 <div class="form-group col-md-8">
-                    <input type="text" class="form-control" id="city" name="Ort" placeholder="Ort" value="'.$this->dbRow["Ortsname"].'">
+                    <input type="text" class="form-control" id="city" name="Ort" placeholder="Ort" required value="'.$this->dbRow["Ortsname"].'">
                 </div>
             </div>
             <div class="row">
@@ -187,10 +187,10 @@ protected $dbRow;
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" value="'.$this->dbRow["AKS_Bezeichnung"].'">
+                    <input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" required value="'.$this->dbRow["AKS_Bezeichnung"].'">
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control"id="infObj" name="InfObj" placeholder="Infrastrukturobjekt" value="'.$this->dbRow["Infrastrukturobjektbezeichnung"].'">
+                    <input type="text" class="form-control"id="infObj" name="InfObj" placeholder="Infrastrukturobjekt" required value="'.$this->dbRow["Infrastrukturobjektbezeichnung"].'">
                 </div>
             </div>
             <div class="modal-footer">
@@ -221,10 +221,10 @@ protected $dbRow;
 			</div>
 			<div class="row">
 				<div class="form-group col-md-4">
-					<input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" value="'.$this->dbRow["AKS_Bezeichnung"].'">
+					<input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" required value="'.$this->dbRow["AKS_Bezeichnung"].'">
 				</div>
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control"id="field" name="Feld" placeholder="Feld" value="'.$this->dbRow["Feldbezeichnung"].'">
+					<input type="text" class="form-control"id="field" name="Feld" placeholder="Feld" required value="'.$this->dbRow["Feldbezeichnung"].'">
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -279,7 +279,7 @@ protected $dbRow;
 			</div>
 			<div class="row">
 				<div class="form-group col-md-4">
-					<input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" value="'.$this->equipments["AKS_Bezeichnung"].'">
+					<input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" required value="'.$this->equipments["AKS_Bezeichnung"].'">
 				</div>
 			</div>					
 		';
@@ -298,9 +298,9 @@ protected $dbRow;
 				<div class="row">
 					<div class="form-group form-inline col-md-12">
 						<lable for="PhaseL'.$i.'">Phase: </label>
-						<input type="text" id="ph1" readonly=true name="PhaseL"'.$i.' class="form-control col-md-1" value="'.$phase.'">
+						<input type="text" id="ph1" readonly=true name="PhaseL"'.$i.' class="form-control col-md-1" required value="'.$phase.'">
 						<input type="text" class="form-control col-md-8" id="serialNo'.$i.'" name="SerieNr'.$i.'" placeholder="SerieNr" value="'.$device["SerienNr"].'">
-						<select id="partNo'.$i.$j.'" name="ArtikelNr'.$i.'" class="form-control col-md-4">
+						<select id="partNo'.$i.'" name="ArtikelNr'.$i.'" class="form-control col-md-4">
 			';
 						foreach($this->transformers as $transformer){
 							$selected = "";
@@ -317,7 +317,7 @@ protected $dbRow;
 				</div>
 				<div class="row">
 					<div class="form-group col-md-6">
-					<input type="numeric" class="form-control min=00000001 max=99999999 col-md-8" id="equipment'.$i.'" name="Equipment'.$i.'" placeholder="Equipment" value="'.$device["Equipment"].'">
+					<input type="numeric" class="form-control min=00000001 max=99999999 col-md-8" id="equipment'.$i.'" name="Equipment'.$i.'" placeholder="Equipment" required value="'.$device["Equipment"].'">
 					</div>
 				</div>
 					';
@@ -328,8 +328,13 @@ protected $dbRow;
 						}
 					}
 					for($j=1;$j<=8;$j++){
-						$core=$cores[$j-1];
-						$coreNumber=$core["Kern"];
+						if(array_key_exists($j-1,$cores)){
+							$core=$cores[$j-1];
+							$coreNumber=$core["Kern"];
+						}else{
+							//$core=$cores[$j-1];
+							$coreNumber=-1;
+						}
 						$html .='
 							<div class="row">
 							<div class="form-group form-inline col-md-12">
@@ -386,12 +391,8 @@ protected $dbRow;
 					<select id="func" name="Funktion" class="form-control">
 		';
 		foreach($this->functions as $function){
-			$selected = "";
-			if ($function["ID"] == $this->devices[0]["FkID"]){
-				$selected = 'selected="selected"';
-			}
 			$html  .= '
-				<option value="'.$function["ID"].'" '.$selected.'>'.$function["Funk"].'</option>
+				<option value="'.$function["ID"].'">'.$function["Funk"].'</option>
 			';
 		}
 		$html .='
@@ -400,7 +401,7 @@ protected $dbRow;
 			</div>
 			<div class="row">
 				<div class="form-group col-md-4">
-					<input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" value="'.$this->equipments["AKS_Bezeichnung"].'">
+					<input type="numeric" class="form-control" min=00001 max=99999 id="aks" name="AKS" placeholder="AKS-Bezeichnung" required >
 				</div>
 			</div>					
 		';
@@ -417,17 +418,13 @@ protected $dbRow;
 				<div class="row">
 					<div class="form-group form-inline col-md-12">
 						<lable for="PhaseL'.$i.'">Phase: </label>
-						<input type="text" id="ph1" readonly=true name="PhaseL'.$i.'" class="form-control col-md-1" value="'.$phase.'">
-						<input type="text" class="form-control col-md-8" id="serialNo'.$i.'" name="SerieNr'.$i.'" placeholder="SerieNr" value="'.$device["SerienNr"].'">
-						<select id="partNo'.$i.$j.'" name="ArtikelNr'.$i.'" class="form-control col-md-4">
+						<input type="text" id="ph1" readonly=true name="PhaseL'.$i.'" class="form-control col-md-1" required value="'.$phase.'">
+						<input type="text" class="form-control col-md-8" id="serialNo'.$i.'" name="SerieNr'.$i.'" placeholder="SerieNr">
+						<select id="partNo'.$i.'" name="ArtikelNr'.$i.'" class="form-control col-md-4">
 			';
 						foreach($this->transformers as $transformer){
-							$selected = "";
-							if ($transformer["BmTID"] == $device["BmTID"]){
-								$selected = 'selected="selected"';
-							}
 							$html  .= '
-								<option value="'.$transformer["BmTID"].'" '.$selected.'>'.$transformer["ArtikelNr"].'</option>
+								<option value="'.$transformer["BmTID"].'">'.$transformer["ArtikelNr"].'</option>
 							';
 						}
 				$html .='
@@ -436,27 +433,18 @@ protected $dbRow;
 				</div>
 				<div class="row">
 					<div class="form-group col-md-6">
-					<input type="numeric" class="form-control min=00000001 max=99999999 col-md-8" id="equipment'.$i.'" name="Equipment'.$i.'" placeholder="Equipment" value="'.$device["Equipment"].'">
+					<input type="numeric" class="form-control min=00000001 max=99999999 col-md-8" id="equipment'.$i.'" name="Equipment'.$i.'" placeholder="Equipment" required >
 					</div>
 				</div>
 					';
 					$cores=array();
-					foreach($this->devices as $device){
-						if($device["Bezeichnung"] == $phase){
-							$cores[] = $device;
-						}
-					}
 					for($j=1;$j<=8;$j++){
-						$core=$cores[$j-1];
-						$coreNumber=$core["Kern"];
 						$html .='
 							<div class="row">
 							<div class="form-group form-inline col-md-12">
 								<lable for="Kern'.$i.$j.'">Kern: </label>
-								<input type="numeric" id="core'.$i.$j.'" name="Kern'.$i.$j.'" class="form-control col-md-2" value="'.$coreNumber.'">
-								<select id="coreDate'.$i.$j.'" name="Kerndaten'.$i.$j.'" class="form-control col-md-8">
+								<input type="numeric" id="core'.$i.$j.'" name="Kern'.$i.$j.'" class="form-control col-md-2" value="-1">
 						';
-						$html .= $this->getCoreSelection($core, $i);	
 						$html .='
 									</select>
 								</div>
@@ -487,7 +475,7 @@ protected $dbRow;
 				$selected = 'selected="selected"';
 			}
 			if($transformer["ArtikelNr"] == $device["ArtikelNr"]){
-				$html  .= '
+				$html  = '
 					<option value="'.$transformer["BmTID"].'" '.$selected.'>'.$transformer["PrimWert"]."/".$transformer["SekWert"].$transformer["Einheitszeichen"]." ".
 					$transformer["Buerde"]."VA ".$transformer["Name"].'</option>
 				';
@@ -585,7 +573,7 @@ if(isset($_POST['saveData'])){
 			$sql.='", "'.$_POST['Adresse'];
 			$sql.='", "'.$location['OrtID'];
 			$sql.='", "'.$_POST['Tel'];
-			$sql.='", '.$_POST['Jahr'];
+			$sql.='", "'.$_POST['Jahr'];
 			$sql.='", 0';
 			$sql.=', "'.Timestamp::getDateTimeLocal();
 			$sql.='", "'.$_SESSION['userName'].'");';
@@ -635,10 +623,13 @@ if(isset($_POST['saveData'])){
 			$database->UpdateDb($sql);
 		}
 		
+		header("location: ../ConstrMgmt/constrMgmt.php?tableName=Feld&filter=".$_POST['parentID']);
+		break;
+		
 		case "BETRIEBSMITTEL":
 	
 		if(isset($_POST['edit'])){
-			$database->Query("SELECT * FROM view_getEquipment WHERE AKS_Bezeichnung="."'".$_POST['filterID']."';");
+			$database->Query("SELECT DISTINCT ID FROM view_getEquipment WHERE AKS_Bezeichnung="."'".$_POST['filterID']."';");
 			$equipments=$database->Rows();
 				$i=1;
 				foreach($equipments AS $equipment){
@@ -655,7 +646,7 @@ if(isset($_POST['saveData'])){
 					$transformers = $database->Rows();
 					for ($j=1;$j<=8;$j++) {
 						$device = $devices[$j-1];
-						if(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]==$device["Kern"])){
+						if(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]==$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
 							$sql= 'UPDATE BAUTEIL SET BmID="'.$equipment['ID'];
 							$sql.= '", BAUTEIL.Index="'.$_POST['Kern'.$i.$device["Kern"]];
 							$subSql = '", BmTID="'.$_POST['ArtikelNr'.$i];
@@ -667,14 +658,14 @@ if(isset($_POST['saveData'])){
 							$sql.=$subSql;
 							$sql.='" WHERE BtID="'.$device['BtID'].'";';
 							$database->UpdateDb($sql);
-						}elseif(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]!=$device["Kern"])){
+						}elseif(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
 							$sql='INSERT INTO BAUTEIL VALUES (default, "'.$_POST['Kern'.$i.$j];
 							$database->Query("SELECT ID FROM view_getEquipment WHERE AKS_Bezeichnung="."'".$_POST['filterID']."';");
 							$sql.='", "'.$database->Rows()[0]["ID"];
 							$sql.='", "'.$_POST['Funktion'];
 							$sql.='", "'.$_POST['ArtikelNr'.$i].'");';
 							$database->UpdateDb($sql);
-						}elseif(($_POST['Kern'.$i.$j]=="") && ($_POST['Kern'.$i.$j]!=$device["Kern"])){
+						}elseif(($_POST['Kern'.$i.$j]=="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
 							$database->Query('SELECT BtID FROM view_getDevices WHERE FilterID='.$_POST['parentID'].' AND AKS_Bezeichnung='.'"'.$_POST['AKS'].'" AND Kern='.$device["Kern"].';');
 							$sql="DELETE FROM BAUTEIL WHERE BtID="."'".$database->Rows()[0]["BtID"]."';";
 							$database->UpdateDb($sql);
@@ -697,7 +688,7 @@ if(isset($_POST['saveData'])){
 				$sql.='", "'.$_SESSION['userName'].'");';
 				$database->UpdateDb($sql);
 				for ($j=1;$j<=8;$j++) {
-					if($_POST['Kern'.$i.$j]!=""){
+					if($_POST['Kern'.$i.$j]!=-1){
 						$sql='INSERT INTO BAUTEIL VALUES (default, "'.$_POST['Kern'.$i.$j];
 						$sql.='", ('.'SELECT BmID FROM BETRIEBSMITTEL WHERE AKS_Bezeichnung="'.$_POST['AKS'];
 						$sql.='" AND FeID="'.$_POST['parentID'];						

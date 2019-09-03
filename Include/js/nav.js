@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    if(getTableName() =="Anlage" || getTableName() == "Mitarbeiter"){
+        $("#btn-back").hide();
+    }
+
     // Doppelklick auf Tabellenelement -> Öffnet nächstes Detailtabelle
     $('tr').dblclick(function() {
         filter = $(this).attr("id");
