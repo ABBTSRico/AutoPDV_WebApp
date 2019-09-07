@@ -46,7 +46,7 @@ class UserManagementLayout {
 						<img src="../../Include/img/012438_ewz-Logo_.png" alt="logo" width="100%" height="auto"/>   <!-- Responsive Layout -->
 					</div>
 				<div class="col-md-8 align-self-center">    <!-- align-self-center damit h1 vertikal in der Mitte ist -->
-					<h1>Benutzerverwaltung</h1>
+					<h1>Benutzerverwalter</h1>
 				</div>
 					<div class="col-md-2">
 					</div>
