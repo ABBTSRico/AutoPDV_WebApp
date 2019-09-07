@@ -29,15 +29,6 @@ h1 {
   height: 75vh;
 }
 
-.SessionErrorText {
-  color: #FF0000;
-  font-size: 2.0vw;
-}
-
-.SessionErrorLink {
-  font-size: 1.5vw;
-}
-
 #Background {
   height: 75vh;
 }

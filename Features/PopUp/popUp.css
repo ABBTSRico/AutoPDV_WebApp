@@ -12,7 +12,7 @@
     background-color: rgba(0,0,0,0.4); 
 }
 
-.popUp-btn{
+.popUp-btn {
     background-color: blueviolet;
     margin-top: 0em;
 }
@@ -34,8 +34,7 @@
     font-weight: bold;
 }
   
-.popUp-close:hover,
-.popUp-close:focus {
+.popUp-close:hover, .popUp-close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

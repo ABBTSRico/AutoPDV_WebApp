@@ -2,13 +2,15 @@
 
 require_once("form.php");
 
-class FormAppend extends Form{
+class FormAppend extends Form {
 
-    public function load($sql){
+    //Kommentar
+    public function load($sql) {
         $this->dbRow = $this->getElementToEdit($sql);
     }
-    
-    public function show(){
+
+    //Kommentar
+    public function show() {
 
         switch($_POST['tableName']){
             case 'Mitarbeiter':
@@ -60,4 +62,5 @@ class FormAppend extends Form{
         }          
     }
 }
+
 ?>

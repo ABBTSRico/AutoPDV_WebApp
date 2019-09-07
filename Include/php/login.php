@@ -2,7 +2,7 @@
 
 session_start();
 require_once("validation.php");
-require_once("Database.php");
+require_once("database.php");
 
 //Variable um ohne VPN Connection zu Arbeiten -> Zu löschen
 $offlineWork = false;
@@ -19,9 +19,6 @@ $checkUser = $validation->checkUser("$userName");
 $checkPassword = $validation->checkPassword("$password");
     
 $mysqli = @new mysqli("abbtsdb",$userName,$password,"Anlagedaten");
-
-//If um ohne VPN Connection zu arbeiten -> Zu löschen
-if ($offlineWork == false){
 
 if (empty($userName) or empty($password)){
     header("location: ../../Features/index.php?LoginError=miss");
@@ -69,23 +66,6 @@ else{
         //Rolle des Benutzers hat keine Berechtigung für Web Applikation
         header("location: ../../Features/index.php?LoginError=role");
     }
-}
-}   //Klammer Für offline Work ohne VPN - zu Entfernen mit kompletten Teil unten
-
-    //************************************************************************************/
-    else{
-        $userId = 14;
-
-        $_SESSION["userManagement"] = $userId;
-        header("location: ../../Features/UserMgmt/userMgmt.php");
-
-        //$_SESSION["constructionEngineer"] = $userId;
-        //header("location: ../../Features/ConstrMgmt/constrMgmt.php");
-
-        //https://www.php.net/manual/de/function.session-create-id.php
-        //$userId = 14;
-        //$ranomSessionId = session_create_id($userId. "S");
-        //$_SESSION["userid"] = $ranomSessionId;
 }
 
 ?>

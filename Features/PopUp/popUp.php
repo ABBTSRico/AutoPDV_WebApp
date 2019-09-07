@@ -3,23 +3,26 @@
 require_once("../../Include/php/session.php");
 Session::sessionCheckGeneral();
 
-require_once("../../Include/php/Database.php");
+require_once("../../Include/php/database.php");
 require_once("../Forms/form.php");
 require_once("../Forms/formEdit.php");
 
-class PopUp{
+class PopUp {
 
 	private $tableName = "";
 
-	function __construct(){
+    //Kommentar
+	function __construct() {
 		$this->tableName = "Anlage";
 	}
 
-	function __construct1($tableName){
+    //Kommentar
+	function __construct1($tableName) {
 		$this->tableName = $tableName;
 	}
 
-    public function getPopUp(){
+    //Kommentar
+    public function getPopUp() {
         $popUp ='            
             <div id="popUp" class="modal fade"   tabindex="-1" role="dialog">            
                 <div class="modal-dialog" role="document">            
@@ -65,12 +68,11 @@ if(isset($_POST['getPopUpBody'])){
         }
         $form ->load($sql);
         echo $form->show();
-        
-    }elseif(isset($_POST['append'])){
+    }
+    elseif(isset($_POST['append'])){
         $form = new FormAppend();    
         echo $form->show();   
     }
-    
 };
 
 ?>

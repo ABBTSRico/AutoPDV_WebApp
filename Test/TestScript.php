@@ -97,7 +97,6 @@ class AutoPDVTest extends TestCase {
         $result = $this->validation->checkChar("abc","d");
         $this->assertEquals(true,$result);
     }
-
 }
 
 ?>

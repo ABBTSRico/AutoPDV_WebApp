@@ -3,8 +3,8 @@
 class Session {
 
     //Session prüfen ohne Bestimmte Rolle
-    public static function sessionCheckGeneral(){
-        if (session_status() == PHP_SESSION_NONE) {
+    public static function sessionCheckGeneral() {
+        if (session_status() == PHP_SESSION_NONE){
             session_start();
         }
         if(!isset($_SESSION["constructionEngineer"]) && !isset($_SESSION["userManager"])){
@@ -13,8 +13,8 @@ class Session {
     }
 
     //Session prüfen für Anlageverwalter (ConstructionEngineer)
-    public static function sessionCheckCE(){
-        if (session_status() == PHP_SESSION_NONE) {
+    public static function sessionCheckCE() {
+        if (session_status() == PHP_SESSION_NONE){
             session_start();
         }
         if(!isset($_SESSION["constructionEngineer"])){
@@ -23,8 +23,8 @@ class Session {
     }
 
     //Session prüfen für Benutzerverwalter (UserManager)
-    public static function sessionCheckUM(){
-        if (session_status() == PHP_SESSION_NONE) {
+    public static function sessionCheckUM() {
+        if (session_status() == PHP_SESSION_NONE){
             session_start();
         }
         if(!isset($_SESSION["userManager"])){
@@ -33,7 +33,7 @@ class Session {
     }
 
     //Session beenden mit Meldung und Link zu Login
-    public static function sessionDestroy(){
+    public static function sessionDestroy() {
         session_destroy();
         die('
         <!DOCTYPE html>
@@ -49,8 +49,6 @@ class Session {
                     <a class="SessionErrorLink" href="../index.php">->Zur Login Page</a>'
         );
     }
-
-
 }
 
 ?>

@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("../Include/php/htmlLayout.php");
@@ -35,7 +34,7 @@ else if(isset($_GET["Logout"]) && $_GET["Logout"] == 'ok'){
     //Logout
     $message="logout";
 }
-else {
+else{
     //Erstmaliges öffnen der Seite
     $message="ok";
 }

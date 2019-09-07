@@ -1,5 +1,7 @@
 <?php
-class Color{
+
+class Color {
+
 	protected $name = "green";
 
 	public function getName(){
@@ -7,4 +9,5 @@ class Color{
 	
 	}
 }
+
 ?>

@@ -1,16 +1,19 @@
 <?php
 
-class Timestamp{
+class Timestamp {
+
     private static $location = 'Europe/Zurich';
     private static $formation = "Y-m-d H:i:s";
 
-    public static function getDateTimeLocal(){
+    //Kommentar
+    public static function getDateTimeLocal() {
         date_default_timezone_set(Timestamp::$location);
         $timestamp = time();
         return (date(Timestamp::$formation,$timestamp));
     }
 
-    public static function getDateTimeUTC(){
+    //Kommentar
+    public static function getDateTimeUTC() {
         $timestamp = time();
         return (date(Timestamp::$formation,$timestamp));
     }

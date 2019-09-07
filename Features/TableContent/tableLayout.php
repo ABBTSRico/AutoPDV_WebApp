@@ -3,12 +3,12 @@
 require_once("../../Include/php/session.php");
 Session::sessionCheckGeneral();
 
-require_once("../../Include/php/Database.php");
+require_once("../../Include/php/database.php");
 
-class TableLayout{
+class TableLayout {
 
     //Tabelleninhalte ($String)
-	public function getTableContent($tableName){
+	public function getTableContent($tableName) {
 		$tableContent = '	
 		<div class="col-md-8">
 			<h2>'.$tableName.'</h2>
@@ -51,7 +51,7 @@ class TableLayout{
 	}
 
 	//Kopfzeile der Tabelle ($Array[String])
-	public function getTableHeader($tableAttr){
+	public function getTableHeader($tableAttr) {
 
 		$tableHeader = '	
 			<thead>
@@ -71,7 +71,7 @@ class TableLayout{
 	}
 
 	//Tabellenrumpf ($Array[String],$String)
-	public function getTableBody($tableAttr,$sql){
+	public function getTableBody($tableAttr,$sql) {
 
         $dataBase = new Database($_SESSION["userName"],$_SESSION["password"]);
 
@@ -92,8 +92,6 @@ class TableLayout{
 
 		return $tableBody;
 	}
-
-
 }
 
 ?>

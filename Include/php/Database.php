@@ -1,6 +1,7 @@
 <?php
 // https://gist.github.com/jonashansen229/4463750
 class Database {
+
 	protected $_link;
 	public $_result;
 	protected $_numRows;
@@ -14,7 +15,7 @@ class Database {
 		$this->_username = $username;
 		$this->_password = $password;
 		$this->_link = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
-		if(mysqli_connect_errno()) {
+		if(mysqli_connect_errno()){
 			echo "Connection Failed: " . mysqli_connect_errno();
 			exit();
 		}
@@ -41,7 +42,7 @@ class Database {
 	public function Rows() {
 		$rows = array();
 		
-		for($x = 0; $x < $this->NumRows(); $x++) {
+		for($x = 0; $x < $this->NumRows(); $x++){
 			$rows[] = mysqli_fetch_assoc($this->_result);
 		}
 		return $rows;
@@ -57,4 +58,5 @@ class Database {
 		return mysqli_real_escape_string($this->_link, $value);
 	}
 }
+
 ?>

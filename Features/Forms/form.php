@@ -3,18 +3,20 @@
 require_once("../../Include/php/session.php");
 Session::sessionCheckGeneral();
 
-require_once("../../Include/php/Database.php");
+require_once("../../Include/php/database.php");
 require_once("../../Include/php/timestamp.php");
 require_once("../../Include/php/validation.php");
 require_once("formEdit.php");
 require_once("formAppend.php");
 
-abstract class Form{
-protected $database;
-protected $sql;
-protected $dbRow;
+abstract class Form {
 
-	function __construct(){
+	protected $database;
+	protected $sql;
+	protected $dbRow;
+
+	//Kommentar
+	function __construct() {
 		$this->database = new Database($_SESSION["userName"],$_SESSION["password"]);
 	}
 
@@ -22,7 +24,8 @@ protected $dbRow;
 
 	public abstract function show();
 
-	public function showFormHeader(){
+	//Kommentar
+	public function showFormHeader() {
 				
 		return '
         <form id="form" method="POST" action="../Forms/form.php">
@@ -30,7 +33,8 @@ protected $dbRow;
         ';
 	}
 
-	public function showEmployee(){
+	//Kommentar
+	public function showEmployee() {
         $this->database->Query("SELECT GrID AS ID, Gruppenname AS USERGROUP FROM BENUTZERGRUPPE");
 		$this->userGroups = $this->database->Rows();
 		$html='
@@ -40,7 +44,8 @@ protected $dbRow;
 		';
 			if(isset($_POST['edit'])){
 				$html.='<input type="text" class="form-control" id="shortsign" readonly=true name="Kurzzeichen" value="'.$this->dbRow["Kurzzeichen"].'">';
-			}else{
+			}
+			else{
 				$html.='<input type="text" class="form-control" id="shortsign" name="Kurzzeichen" value="'.$this->dbRow["Kurzzeichen"].'">';
 			}
 		$html .='
@@ -88,7 +93,8 @@ protected $dbRow;
 		return $html;
 	}
 
-	public function showStation(){
+	//Kommentar
+	public function showStation() {
         $this->database->Query("SELECT VnID AS ID, AKS_Bezeichnung, Verteilnetzname AS NET FROM VERTEILNETZ");
 		$this->distNets = $this->database->Rows();
         $this->database->Query("SELECT NeID AS ID, AKS_Bezeichnung, Bezeichnung AS NET FROM NETZEBENE");
@@ -166,7 +172,8 @@ protected $dbRow;
 		return $html;
 	}
 
-	public function showInfOb(){
+	//Kommentar
+	public function showInfOb() {
         $this->database->Query("SELECT AnID AS ID, AKS_Bezeichnung, Anlagename AS STA FROM ANLAGE");
 		$this->stations = $this->database->Rows();
 		$html='
@@ -199,8 +206,9 @@ protected $dbRow;
 		';
 		return $html;
 	}
- 
-	public function showField(){
+
+	//Kommentar
+	public function showField() {
 		$this->database->Query("SELECT InfObID AS ID, AKS_Bezeichnung, Infrastrukturobjektbezeichnung AS INFOB FROM INFRASTRUKTUROBJEKT");
 		$this->infObjs = $this->database->Rows();
 		$html='
@@ -234,7 +242,8 @@ protected $dbRow;
 		return $html;
 	}
 
-	public function showEquipmentEdit(){
+	//Kommentar
+	public function showEquipmentEdit() {
 		$this->database->Query("SELECT FeID AS ID, AKS_Bezeichnung AS AKS, Feldbezeichnung AS Feld FROM FELD;");
 		$this->fields = $this->database->Rows();
 		$this->database->Query("SELECT * FROM BETRIEBSMITTEL WHERE BETRIEBSMITTEL.BmID=".$this->dbRow["ID"].";");
@@ -331,7 +340,8 @@ protected $dbRow;
 						if(array_key_exists($j-1,$cores)){
 							$core=$cores[$j-1];
 							$coreNumber=$core["Kern"];
-						}else{
+						}
+						else{
 							//$core=$cores[$j-1];
 							$coreNumber=-1;
 						}
@@ -364,7 +374,8 @@ protected $dbRow;
 		return $html;
 	}
 
-	public function showEquipmentAppend(){
+	//Kommentar
+	public function showEquipmentAppend() {
 		$this->database->Query("SELECT FeID AS ID, AKS_Bezeichnung AS AKS, Feldbezeichnung AS Feld FROM FELD;");
 		$this->fields = $this->database->Rows();
         $this->database->Query("SELECT FkID AS ID, Funktionsname  AS Funk FROM FUNKTION");
@@ -463,12 +474,14 @@ protected $dbRow;
 		return $html;
 	}
 
-	protected function getElementToEdit($sql){
+	//Kommentar
+	protected function getElementToEdit($sql) {
 		$this->database->Query($sql);
 		return $this->database->Rows()[0];
 	}
 
-	protected function getCoreSelection($device, $i){
+	//Kommentar
+	protected function getCoreSelection($device, $i) {
 		foreach($this->transformers as $transformer){
 			$selected = "";
 			if ($transformer["BmTID"] == $device["BmTID"]){
@@ -498,7 +511,8 @@ if(isset($_POST['saveData'])){
 			$database->UpdateDb($sql);
 			header("location: ../UserMgmt/UserMgmt.php?tableName=Mitarbeiter");
 			
-		}elseif(isset($_POST['append'])){
+		}
+		elseif(isset($_POST['append'])){
 			$passwordError = $validation->checkPassword($_POST['Passwort']);
 			if($passwordError=="ok"){				
 				$database->Query('SELECT * FROM MITARBEITER WHERE Kurzzeichen="'.$_POST['Kurzzeichen'].'";');
@@ -513,13 +527,15 @@ if(isset($_POST['saveData'])){
 					$sql.='", "'.$_SESSION['userName'].'");';
 					$database->UpdateDb($sql);
 					header("location: ../UserMgmt/UserMgmt.php?tableName=Mitarbeiter");
-				}else{
+				}
+				else{
 					echo '<script type="text/javascript" language="javascript">
 						alert("Der Benutzer mit dem Kurzzeichen '.$_POST['Kurzzeichen'].' existiertbereits!!!");
 					</script>';
 				}
 				
-			}else{
+			}
+			else{
 				switch($passwordError){
 					case "Blank":
 						$msg = "Kein Eingebe!!!";
@@ -564,7 +580,8 @@ if(isset($_POST['saveData'])){
 			$sql.='" WHERE AnID="'.$_POST['filterID'].'";';
 			$database->UpdateDb($sql);
 			
-		}elseif(isset($_POST['append'])){
+		}
+		elseif(isset($_POST['append'])){
 			$sql='INSERT INTO '.$_POST['tableName'].' VALUES (default, "'.$_POST['Verteilnetz'];
 			$sql.='", "'.$_POST['Netzebene'];
 			$sql.='", "'.$_POST['AKS'];
@@ -590,7 +607,8 @@ if(isset($_POST['saveData'])){
 			$sql.='" WHERE InfObID="'.$_POST['filterID'].'";';
 			$database->UpdateDb($sql);
 			
-		}elseif(isset($_POST['append'])){
+		}
+		elseif(isset($_POST['append'])){
 			$sql='INSERT INTO '.$_POST['tableName'].' VALUES (default, "'.$_POST['parentID'];
 			$sql.='", "'.$_POST['AKS'];
 			$sql.='", "'.$_POST['InfObj'];
@@ -612,7 +630,8 @@ if(isset($_POST['saveData'])){
 			$sql.='" WHERE FeID="'.$_POST['filterID'].'";';
 			$database->UpdateDb($sql);
 			
-		}elseif(isset($_POST['append'])){
+		}
+		elseif(isset($_POST['append'])){
 			$sql='INSERT INTO '.$_POST['tableName'].' VALUES (default, "'.$_POST['parentID'];
 			$sql.='", "'.$_POST['AKS'];
 			$sql.='", "'.$_POST['Feld'];
@@ -658,14 +677,16 @@ if(isset($_POST['saveData'])){
 							$sql.=$subSql;
 							$sql.='" WHERE BtID="'.$device['BtID'].'";';
 							$database->UpdateDb($sql);
-						}elseif(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
+						}
+						elseif(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
 							$sql='INSERT INTO BAUTEIL VALUES (default, "'.$_POST['Kern'.$i.$j];
 							$database->Query("SELECT ID FROM view_getEquipment WHERE AKS_Bezeichnung="."'".$_POST['filterID']."';");
 							$sql.='", "'.$database->Rows()[0]["ID"];
 							$sql.='", "'.$_POST['Funktion'];
 							$sql.='", "'.$_POST['ArtikelNr'.$i].'");';
 							$database->UpdateDb($sql);
-						}elseif(($_POST['Kern'.$i.$j]=="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
+						}
+						elseif(($_POST['Kern'.$i.$j]=="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
 							$database->Query('SELECT BtID FROM view_getDevices WHERE FilterID='.$_POST['parentID'].' AND AKS_Bezeichnung='.'"'.$_POST['AKS'].'" AND Kern='.$device["Kern"].';');
 							$sql="DELETE FROM BAUTEIL WHERE BtID="."'".$database->Rows()[0]["BtID"]."';";
 							$database->UpdateDb($sql);
@@ -675,7 +696,8 @@ if(isset($_POST['saveData'])){
 					
 				}
 			
-		}elseif(isset($_POST['append'])){
+		}
+		elseif(isset($_POST['append'])){
 			for($i=1;$i<=3;$i++){
 				$sql='INSERT INTO '.$_POST['tableName'].' VALUES (default, "'.$_POST['Equipment'.$i];
 				$sql.='", "'.$_POST['PhaseL'.$i];
@@ -718,7 +740,8 @@ if(isset($_POST['deleteData'])){
 			foreach($database->Rows() AS $equipment){
 				$database->UpdateDb('UPDATE BETRIEBSMITTEL SET Geloescht=1, '.$timetag.' WHERE BmID='.$equipment["ID"].';');
 			}		
-		}else{
+		}
+		else{
 			switch($_POST["tableName"]){
 				case 'Mitarbeiter': $sql= 'CALL sps_deleteUser("'.$_POST["filterID"].'", "'.Timestamp::getDateTimeLocal().'", "'.$_SESSION['userName'].'");';
 				break;
@@ -732,4 +755,5 @@ if(isset($_POST['deleteData'])){
 			$database->UpdateDb($sql);
 		}
 };
+
 ?>
