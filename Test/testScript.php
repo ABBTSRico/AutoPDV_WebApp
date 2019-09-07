@@ -1,7 +1,5 @@
 <?php
 
-//File umbenannt
-
 use PHPUnit\Framework\TestCase;
 
 require 'smokeTest.php';

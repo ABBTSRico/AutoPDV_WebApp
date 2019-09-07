@@ -1,7 +1,5 @@
 <?php
 
-//File umbenannt
-
 // https://gist.github.com/jonashansen229/4463750
 class Database {
 

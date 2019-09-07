@@ -1,7 +1,5 @@
 <?php
 
-//File umbenannt
-
 class SmokeTest {
 
     //Funktion um HTTP-Status Code zu prüfen
