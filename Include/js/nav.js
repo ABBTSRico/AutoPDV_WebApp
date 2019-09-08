@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    //Zurückknopf ausblenden
     if(getTableName() =="Anlage" || getTableName() == "Mitarbeiter"){
         $("#btn-back").hide();
     }
@@ -127,7 +128,10 @@ $(document).ready(function(){
 
     //Daten in Datenbank schreiben
     $(document).on('click','#btn-del',function(){
-        $.post("../Forms/form.php",{"deleteData":true,"tableName":getTableName(),"filterID":filter});
-        closePopUp(); 
+        var r = confirm("Wollen Sie das ausgewählte Element wirklich löschen?")
+        if(r==true){
+            $.post("../Forms/form.php",{"deleteData":true,"tableName":getTableName(),"filterID":filter});
+            closePopUp(); 
+        }
     });
 })

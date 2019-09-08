@@ -11,7 +11,7 @@ class HtmlLayout {
 						<meta charset="utf-8">
 						<title>EWZ - AutoPDV</title>
 						<link rel="stylesheet" href="../Include/css/indexLayout.css">
-						<link rel="stylesheet" href="../Include/bootstrap-4.3.1-dist/css/bootstrap.min.css"
+						<link rel="stylesheet" href="../Include/bootstrap-4.3.1-dist/css/bootstrap.min.css">
 					</head>
 					<body>
 					';
@@ -64,6 +64,9 @@ class HtmlLayout {
 		else if($status == "cred"){
 			$Message ="Falscher Benutzername oder Passwort"; 
 		}
+		else if($status == "unkn"){
+			$Message ="Datenbank nicht vorhanden"; 
+		}
 		else if($status == "role"){
 			$Message ="Mit Ihrer Rolle haben Sie keine Berechtigung für diese Applikation"; 
 		}
@@ -73,8 +76,15 @@ class HtmlLayout {
 		$pageContent = '
 			<div id="c2" class="container-fluid text-center">
   				<div class="row content">
-    				<div class="col-md-2 sidenav">
-    					<form action="../Include/php/login.php" method="post">
+					<div class="col-md-2 sidenav">
+		';
+			if($status == "unkn"){
+    			$pageContent .= '<form action="../Include/php/ReloadDB.php" method="get">
+					<input type="hidden" name="initDB" value=true>';
+			}else{
+    			$pageContent .= '<form action="../Include/php/login.php" method="post">';
+			}
+		$pageContent .= '
             				<fieldset>
                 				<legend>Login</legend>
                 				Benutzername:<br/>

@@ -26,6 +26,10 @@ else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'cred'){
     //Falscher Benutzername oder Passwort (DB Login)
     $message="cred";
 }
+else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'unkn'){
+    //Datenbank nicht vorhanden (DB Login)
+    $message="unkn";
+}
 else if (isset($_GET["LoginError"]) && $_GET["LoginError"] == 'role'){
     //Benutzer hat Rolle die keine Berechtigung für Web App hat
     $message="role";
