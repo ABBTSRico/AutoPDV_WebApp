@@ -54,15 +54,7 @@ else{
     $query="SELECT GrID FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\";";
     $userGroup=mysqli_fetch_assoc(mysqli_query($con,$query));
 
-    if ($userGroup["GrID"] == 1){
-        //Anlagebewirtschafter
-        $_SESSION["administrator"] = $user["MaID"];
-        $_SESSION["constructionEngineer"] = $user["MaID"];
-        $_SESSION["userManager"] = $user["MaID"];
-        header("location: ../../Features/Admin/admin.php");
-    }
-    
-    elseif ($userGroup["GrID"] == 2){
+    if ($userGroup["GrID"] == 2){
         //Anlagebewirtschafter
         $_SESSION["constructionEngineer"] = $user["MaID"];
         header("location: ../../Features/ConstrMgmt/constrMgmt.php?tableName=Anlage");
