@@ -24,7 +24,7 @@ abstract class Form {
 
 	public abstract function show();
 
-	//Kommentar
+	//Erzeugt einen immer gleichen Formularkopf
 	public function showFormHeader() {
 				
 		return '
@@ -33,7 +33,7 @@ abstract class Form {
         ';
 	}
 
-	//Kommentar
+	//Erzeuft den Fprmularinhalt für das Erstellen bzw Ändern Von Mitarbeitern
 	public function showEmployee() {
         $this->database->Query("SELECT GrID AS ID, Gruppenname AS USERGROUP FROM BENUTZERGRUPPE");
 		$this->userGroups = $this->database->Rows();
@@ -307,7 +307,7 @@ abstract class Form {
 				<div class="row">
 					<div class="form-group form-inline col-md-12">
 						<lable for="PhaseL'.$i.'">Phase: </label>
-						<input type="text" id="ph1" readonly=true name="PhaseL"'.$i.' class="form-control col-md-1" required value="'.$phase.'">
+						<input type="text" id="ph1" readonly=true name="PhaseL'.$i.'" class="form-control col-md-1" required value="'.$phase.'">
 						<input type="text" class="form-control col-md-8" id="serialNo'.$i.'" name="SerieNr'.$i.'" placeholder="SerieNr" value="'.$device["SerienNr"].'">
 						<select id="partNo'.$i.'" name="ArtikelNr'.$i.'" class="form-control col-md-4">
 			';
@@ -504,10 +504,19 @@ if(isset($_POST['saveData'])){
 	switch($_POST['tableName']){
 		case "MITARBEITER":
 		if(isset($_POST['edit'])){
-			$sql= 'CALL sps_mutateUser("'.$_POST["filterID"];
-			$sql.='", "'.$_POST['Benutzergruppe'];
-			$sql.='", "'.Timestamp::getDateTimeLocal();
-			$sql.='", "'.$_SESSION['userName'].'");';
+			$database->Query('SELECT GrID FROM MITARBEITER WHERE MaID='.$_POST["filterID"].';');
+			if($database->Rows()[0]['GrID']!==$_POST['Benutzergruppe']){
+				$sql= 'CALL sps_mutateUser("'.$_POST["filterID"];
+				$sql.='", "'.$_POST['Benutzergruppe'];
+				$sql.='", "'.Timestamp::getDateTimeLocal();
+				$sql.='", "'.$_SESSION['userName'].'");';
+			}else{
+				$sql= 'UPDATE MITARBEITER SET Vorname="'.$_POST['Vorname'];
+				$sql.='", Nachname="'.$_POST['Nachname'];
+				$sql.='", Datum="'.Timestamp::getDateTimeLocal();
+				$sql.='", Visum="'.$_SESSION['userName'];
+				$sql.='" WHERE MaID="'.$_POST['filterID'].'";';
+			}
 			$database->UpdateDb($sql);
 			header("location: ../UserMgmt/UserMgmt.php?tableName=Mitarbeiter");
 			
@@ -523,8 +532,8 @@ if(isset($_POST['saveData'])){
 					$sql.='", "'.$_POST['Nachname'];
 					$sql.='", "'.$_POST['Kurzzeichen'];
 					$sql.='", "'.$_POST['Passwort'];
-					$sql.='", "'.Timestamp::getDateTimeLocal();
-					$sql.='", "'.$_SESSION['userName'].'");';
+					$sql.='", Datum="'.Timestamp::getDateTimeLocal();
+					$sql.='", Visum="'.$_SESSION['userName'].'");';
 					$database->UpdateDb($sql);
 					header("location: ../UserMgmt/UserMgmt.php?tableName=Mitarbeiter");
 				}
@@ -680,7 +689,7 @@ if(isset($_POST['saveData'])){
 						}
 						elseif(($_POST['Kern'.$i.$j]!="") && ($_POST['Kern'.$i.$j]!=$device["Kern"]) && $_POST['Kern'.$i.$j]!=-1){
 							$sql='INSERT INTO BAUTEIL VALUES (default, "'.$_POST['Kern'.$i.$j];
-							$database->Query("SELECT ID FROM view_getEquipment WHERE AKS_Bezeichnung="."'".$_POST['filterID']."';");
+							$database->Query("SELECT ID FROM view_getEquipment WHERE AKS_Bezeichnung="."'".$_POST['filterID']."' AND Phase="."'".$_POST['PhaseL'.$i]."';");
 							$sql.='", "'.$database->Rows()[0]["ID"];
 							$sql.='", "'.$_POST['Funktion'];
 							$sql.='", "'.$_POST['ArtikelNr'.$i].'");';
