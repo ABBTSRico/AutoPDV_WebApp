@@ -28,13 +28,13 @@ $(document).ready(function(){
       
         var isPopUpactiv = false;
 
-        $.each($('.popUp'),function(){
+        $.each($('#popUp'),function(){
             if ($(this).css("display") == "block"){
                 return isPopUpactiv = true;
             }
         });
 
-        if (event.key == "Enter" && !isPopUpactiv) {// Betätigen der ENTER-Taste
+        if (event.key == "Enter" && !(isPopUpactiv || window.location.pathname==="/autopdv/features/index.php")) {// Betätigen der ENTER-Taste
             event.preventDefault();
             if ($('.selected').attr("id") != null){
               filter = $('.selected').attr("id");
