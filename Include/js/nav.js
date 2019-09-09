@@ -42,6 +42,10 @@ $(document).ready(function(){
             }else{
               alert("Es ist kein Element ausgewählt !!!");
             }
+        }else if(event.key == "Enter" && isPopUpactiv){
+            $('#form').submit();
+        }else if(event.key == "Enter" && window.location.pathname==="/autopdv/features/index.php"){
+            $('#loginForm').submit();
         }
     }, true);
 
