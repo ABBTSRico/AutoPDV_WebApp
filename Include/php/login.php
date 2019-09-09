@@ -45,13 +45,13 @@ else{
     //Korrekter Login
     $con = mysqli_connect("abbtsdb",$userName,$password,"Anlagedaten");
     
-    $query="SELECT Vorname FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\";";
+    $query="SELECT Vorname FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\" AND Mutiert=0 AND Ausgetreten=0;";
     $row=mysqli_fetch_assoc(mysqli_query($con,$query));
     
-    $query="SELECT MaID FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\";";
+    $query="SELECT MaID FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\" AND Mutiert=0 AND Ausgetreten=0;";
     $user=mysqli_fetch_assoc(mysqli_query($con,$query));
 
-    $query="SELECT GrID FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\";";
+    $query="SELECT GrID FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\" AND Mutiert=0 AND Ausgetreten=0;";
     $userGroup=mysqli_fetch_assoc(mysqli_query($con,$query));
 
     if ($userGroup["GrID"] == 2){
