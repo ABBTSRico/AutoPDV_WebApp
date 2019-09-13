@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `Anlagedaten` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-CREATE USER 'abbtsAA' IDENTIFIED BY 'abbtsAA';
-GRANT ALL ON *.* TO abbtsAA WITH GRANT OPTION;
+CREATE USER 'abbtsAA'@'localhost' IDENTIFIED BY 'abbtsAA';
+GRANT ALL ON *.* TO 'abbtsAA'@'localhost' WITH GRANT OPTION;
 
-CREATE USER 'abbtsAB' IDENTIFIED BY 'abbtsAB';
-GRANT ALL ON *.* TO abbtsAB WITH GRANT OPTION;
+CREATE USER 'abbtsAB'@'localhost' IDENTIFIED BY 'abbtsAB';
+GRANT ALL ON *.* TO 'abbtsAB'@'localhost' WITH GRANT OPTION;
 
 USE `Anlagedaten`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
