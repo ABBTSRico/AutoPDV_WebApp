@@ -18,7 +18,7 @@ $_SESSION["password"] = $password;
 $checkUser = $validation->checkUser("$userName");
 $checkPassword = $validation->checkPassword("$password");
     
-$mysqli = @new mysqli("abbtsdb",$userName,$password,"Anlagedaten");
+$mysqli = @new mysqli("localhost",$userName,$password,"Anlagedaten");
 
 if (empty($userName) or empty($password)){
     header("location: ../../Features/index.php?LoginError=miss");
@@ -43,7 +43,7 @@ else if ($mysqli->connect_error){
 }
 else{
     //Korrekter Login
-    $con = mysqli_connect("abbtsdb",$userName,$password,"Anlagedaten");
+    $con = mysqli_connect("localhost",$userName,$password,"Anlagedaten");
     
     $query="SELECT Vorname FROM MITARBEITER WHERE Kurzzeichen=\"". $userName."\" AND Mutiert=0 AND Ausgetreten=0;";
     $row=mysqli_fetch_assoc(mysqli_query($con,$query));

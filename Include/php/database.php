@@ -6,7 +6,7 @@ class Database {
 	protected $_link;
 	public $_result;
 	protected $_numRows;
-	private $_host = "abbtsdb";
+	private $_host = "localhost";
 	private $_username = "";
 	private $_password = "";
 	private $_database = "Anlagedaten";
